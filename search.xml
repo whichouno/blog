@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[you-get+ffmpeg实现从下载到提取音视频]]></title>
+    <url>%2F2019%2F05%2F01%2F1%2F</url>
+    <content type="text"><![CDATA[安装you-get sudo apt-get install python3-pip &amp;&amp; sudo pip3 install you-get 其他安装方法：https://github.com/soimort/you-get#option-1-install-via-pip 简单使用you-get 更完善的使用方法请看：https://github.com/soimort/you-get#getting-started 指定下载的画质或者媒体类型 使用 -i 选项进行查看可用下载：you-get -i &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39; 使用 --itag= 选项指定下载文件：you-get --itag=18 &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39; 直接下载: you-get &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39; 直接下载一般会下载 -i 选项的第一个文件，一般 是最高的画质。 下载其他文件，不仅仅是媒体文件：you-get https://stallman.org/rms.jpg通过 HTTP 代理下载 没有代理？参见：自建简易代理 我们只需要在第一个选项前面插入-x ip:port就行，如：you-get -x localhost:1080 -i &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39; 安装FFmpeg 参见我的这篇博文：FFmpeg的简单使用 使用you-get+ffmpeg实现从下载到提取音视频you-get下载视频 参见：简单使用you-get ffmpeg提取指定音视频文件手动实现 参见我的这篇博文：FFmpeg的简单使用脚本实现 获取脚本： 1wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/ffmpeg.sh 使用脚本： 直接./ffmpeg.sh 按着脚本一步一步来 1234567891011121314$ ./ffmpeg.sh请选择你要选择的操作的序号：* 所有文件名请完整输入文件名称，包括后缀名！1.获取aac音频文件2.获取mp3文件3.获取H.264视频流文件(.mp4文件)4.整合mp4文件和mp4文件5.整合mp4和mp3文件6.整合mp4和aac文件7.添加srt字幕8.srt字幕转ass9.添加ass字幕 命令行传参 使用 -h 查看帮助 12345678910111213$ ./ffmpeg.sh -h-h: To show this menu-e: Show Some Useful Templates-m [1-9]: To switch mode -m 1: 获取aac音频文件 -m 2: 获取mp3文件 -m 3: 获取H.264视频流文件(.mp4文件) -m 4: 整合mp4文件和mp4文件 -m 5: .整合mp4和mp3文件 -m 6: 整合mp4和aac文件 -m 7: 添加srt字幕 -m 8: srt字幕转ass -m 9: 添加ass字幕 使用 -e 查看示例 12345678910$ ./ffmpeg.sh -e./ffmpeg.sh -m 1 input.mp4 output.aac./ffmpeg.sh -m 2 input.mp4 output.mp3./ffmpeg.sh -m 3 input.mp4 output.mp4./ffmpeg.sh -m 4 input_audio.mp4 input_video.mp4 output.mp4./ffmpeg.sh -m 5 input.mp3 input.mp4 output.mp4./ffmpeg.sh -m 6 input.aac input.mp4 output.mp4./ffmpeg.sh -m 7 input.mp4 input.srt output.mp4./ffmpeg.sh -m 8 input.srt output.ass./ffmpeg.sh -m 9 input.mp4 input.ass output.mp4 使用 -m 指定处理模式 具体使用参见示例：./ffmpeg.sh -e 123456789-m 1: 获取aac音频文件-m 2: 获取mp3文件-m 3: 获取H.264视频流文件(.mp4文件)-m 4: 整合mp4文件和mp4文件-m 5: 整合mp4和mp3文件-m 6: 整合mp4和aac文件-m 7: 添加srt字幕-m 8: srt字幕转ass-m 9: 添加ass字幕 样例 Carole &amp; Tuesday片头曲 下载文件：you-get https://youtu.be/k45EpgweT9o 合并文件：./ffmpeg.sh -m 4 *01*.mp4 *00*.mp4 output.mp4 压入字幕：./ffmpeg.sh -m 7 output.mp4 *.ja.srt output_srt.mp4 So, Enjoy it!!! 当然如果有 bug 的话，还请及时反馈（推荐 GitHub 直接提 issues, 直接在文章底部留言也行）]]></content>
+      <categories>
+        <category>software</category>
+        <category>useful</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu使用命令修改屏幕的显示方向]]></title>
+    <url>%2F2019%2F04%2F22%2F1%2F</url>
+    <content type="text"><![CDATA[Ubuntu踩坑记 之前VM的查看-&gt;立即适应客户机还没有变灰的时候倒是可以通过这个调屏幕的方向，不过天有不测风云 :-( PS: 在更改屏幕方向以后如果您想保持这个显示方向的话，还请在 setting-&gt;Display 里面修改显示器方向后保存。如果不，重启之后系统就会恢复原来的显示器方向。 恢复默认方向1xrandr -o normal 左旋转 同理右旋转和反转屏幕等操作也类似，更多操作还请参考 xrandr --help 1xrandr -o left 查看当前显示器的输出信息1xrandr -o q 旋转某个视频接口的视频输出方向123xrandr --output HDMI1 --rotate leftxrandr --output HDMI1 --rotate normal]]></content>
+      <categories>
+        <category>config</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>Gnome</tag>
+        <tag>xrandr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[禁用Windows 驱动器/文件夹 压缩属性]]></title>
+    <url>%2F2019%2F04%2F10%2F1%2F</url>
+    <content type="text"><![CDATA[本教程介绍如何在Microsoft Windows中禁用“文件压缩”功能。原文链接：https://www.technipages.com/disable-windows-file-compression Windows 10,8,7和Vista命令 选择 开始 按钮，然后键入 CMD。 右键单击 命令提示符 ，然后选择 以管理员身份运行。 如果提示输入密码，请输入具有管理员权限的帐户的凭据。键入以下内容，然后按 Enter: 1fsutil behavior set disablecompression 1 您应该收到一条消息 请注意：对此设置的更改需要重新启动才能生效。重新启动计算机以进行更改。 如果要再次启用它，可以使用该命令: 1fsutil behavior set disablecompression 0 Windows组策略 从组策略编辑器，导航到计算机配置&gt;管理模板&gt;系统&gt;文件系统&gt;NTFS。 打开不允许在所有NTFS卷上进行压缩。 选择已启用单选按钮，然后选择确定。 Windows 2000和XP NTFS卷 按住Windows键，然后按R。 输入regedit并选择确定。 导航到以下内容：HKEY_LOCAL_MACHINE/SYSTEM/CURRENTCONTROLSET/Control/FileSystem 12345HKEY_LOCAL_MACHINESYSTEMCURRENTCONTROLSETControlFileSystem 在NtfsDisableCompression 的右侧查找条目。如果它不存在，您将需要创建它。为此，右键单击FileSystem，然后选择新建 &gt; DWORD值。为该值指定NtfsDisableCompression。完成后按Enter键。 右键单击NtfsDisableCompression条目，然后单击修改。要禁用压缩，请将值数据设置为1。（要再次启用压缩，请将数值数据设置为0或删除NftsDisableCompression） 重新启动计算机以应用更改。 现在，当尝试压缩文件夹时，将产生以下错误：将属性应用于文件时发生错误：{file path and filename}拒绝访问。]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IDEA Angular 'Component'错误]]></title>
+    <url>%2F2019%2F03%2F25%2F1%2F</url>
+    <content type="text"><![CDATA[转载自：https://stackoverflow.com/questions/47584359/angular-error-component-x-is-not-included-in-a-module-when-declared-in-a虽然有这个问题，但是不影响网页正常生成 解决方案： 如图，打开IDEA设置，把 Recompile on changes 勾上 : 在一级子目录下找到 tsconfig.json 并且修改 compileOnSave 为 true : 回到会导致 Component 错误的地方，重新输入 “@Component” Good luck! :-)]]></content>
+      <categories>
+        <category>Config</category>
+      </categories>
+      <tags>
+        <tag>Config</tag>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[自建简易代理]]></title>
+    <url>%2F2019%2F03%2F17%2F1%2F</url>
+    <content type="text"><![CDATA[智者建桥,愚者建墙 实在不会的，可以 e-mail to ccmejx@gmail.com，请求有偿帮助 为什么需要代理？ 滥用 代理会发生什么？ 喝茶 前提要求 有一台VPS 有基本文字阅读能力 连接VPS 使用openssh,putty等进行连接 直接使用商家提供的console进行连接 特别注意，在输入密码的时候，终端无回显 实在不会的，可以 e-mail to ccmejx@gmail.com，请求有偿帮助 常用代理搭建方式 声明：ssr, ss, mtproxy一键脚本均采用逗比的一键脚本 v2ray v2ray内建支持 Mtproxy 官方go脚本 安装： 1bash &lt;(curl -L -s https://install.direct/go.sh) 使用官方脚本可以参考以下步骤： 不清楚的请使用一键脚本1234bash &lt;(curl -L -s https://install.direct/go.sh) wget -N --no-check-certificate https://raw.githubusercontent.com/IITII/Useless/master/v2ray-config.jsonmv ./v2ray-config.json /etc/v2ray/config.jsonsystemctl restart v2ray &amp;&amp; systemctl status v2ray multi-v2ray一键脚本Feature V2ray &amp;&amp; Iptables 流量分析 多端口与用户管理 动态端口 禁止BT Range port TcpFastOpen Vmess/Socks5/MTproto 链接分享 支持的协议类型: TCP Fake http WebSocket mkcp mKCP + srtp mKCP + utp mKCP + wechat-video mKCP + dtls mKCP + wireguard HTTP/2 Socks5 MTProto Shadowsocks Quic Installnew install1source &lt;(curl -sL https://git.io/fNgqx) keep profile to update1source &lt;(curl -sL https://git.io/fNgqx) -k uninstall1source &lt;(curl -sL https://git.io/fNgqx) --remove SSR 支持 限制 用户速度 支持 限制 端口设备数 支持 显示 当前连接IP 支持 显示 SS/SSR连接+二维码 支持 切换管理 单/多端口 支持 一键安装 锐速 支持 一键安装 BBR 支持 一键封禁 垃圾邮件(SMAP)/BT/PT 下载安装： 单用户：1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh 多用户：1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/ssrmu.sh &amp;&amp; chmod +x ssrmu.sh &amp;&amp; bash ssrmu.sh SS1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/ss-go.sh &amp;&amp; chmod +x ss-go.sh &amp;&amp; bash ss-go.sh Mtproxy一般版本：1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/mtproxy.sh &amp;&amp; chmod +x mtproxy.sh &amp;&amp; bash mtproxy.sh Go语言版本：1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/mtproxy_go.sh &amp;&amp; chmod +x mtproxy_go.sh &amp;&amp; bash mtproxy_go.sh BBR1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; bash bbr.sh 生成属于自己的订阅 可以参考我这篇博文：搭建个人订阅 关于代理的使用与常见问题的汇总 参见：[ShadowsocksR] 大概是萌新也看得懂的SSR功能详细介绍&amp;使用教程 其他 goproxy frp ss panel v3 mod 可以参考我这篇博文：内网穿透 无知亦无得]]></content>
+      <categories>
+        <category>proxy</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo跳过指定文件的渲染]]></title>
+    <url>%2F2019%2F02%2F15%2F1%2F</url>
+    <content type="text"><![CDATA[关于hexo的_config.yml配置，官方文档中： skip_render：跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。 未说明具体该怎么配置 修改的_config.yml配置文件应为站点文件夹下的，而非主题文件夹下的_config.yml配置文件 可以直接 Ctrl + F 查找 skip_render 关键字 跳过单文件 如果要跳过source文件夹下的test.html，可以这样配置： 1skip_render: test.html or 1skip_render: [test.html] 注意，千万不要手贱加上个/写成/test.html，这里只能填相对于source文件夹的相对路径。 跳过多文件 如果要忽略source下的test文件夹下所有文件，可以这样配置： 1skip_render: test/* or 1skip_render: [test/*] 如果要忽略source下的test文件夹下.html文件，可以这样配置： 1skip_render: test/*.html or 1skip_render: [test/*.html] 如果要忽略source下的test文件夹下所有文件和目录，可以这样配置： 1skip_render: test/** or 1skip_render: [test/**] 如果要忽略多个路径的文件或目录，可以这样配置： 12345skip_render: - test.html - '*.html' - test/** - test/* or 1skip_render: [test.html, '*.html', test/**, test/*] 参见： 如何不处理source目录下某个子目录的所有文件，仅仅是将其copy到public目录中对应目录？]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[内网穿透]]></title>
+    <url>%2F2019%2F02%2F13%2F1%2F</url>
+    <content type="text"><![CDATA[梦一场 Update at Sat May 11 16:49:47 CST 2019 利用正反 SSH 隧道穿透防火墙访问内网服务器 Announce: 工具：实现内网穿透，我目前比较推荐frp和goproxy Github: frp: https://github.com/fatedier/frp Github: goproxy: https://github.com/snail007/goproxy frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。 goproxy是基于golang实现的高性能http,https,websocket,tcp,udp,socks5,ss代理服务器,支持正向代理、反向代理、透明代理、内网穿透、TCP/UDP端口映射、SSH中转、TLS加密传输、协议转换、防污染DNS代理。 对于内网穿透来说frp比goproxy更功能更多，goproxy更偏向于网络代理 goproxy内置了长驻后台的功能，如果想后台运行proxy,命令行可以关闭,只需要在命令最后加上--daemon参数即可。如果想防止应用异常退出，可以使用--forever参数，proxy会fork子进程,然后监控子进程,如果子进程异常退出,5秒后重启子进程，该参数配合后台运行参数--daemon和日志参数--log,可以保障proxy一直在后台执行不会因为意外退出,而且可以通过日志文件看到proxy的输出日志内容 Goproxy下载 &amp; 安装自动安装 如果你的VPS是linux64位的系统,那么只需要执行下面一句,就可以完成自动安装和配置 1curl -L https://raw.githubusercontent.com/snail007/goproxy/master/install_auto.sh | bash 安装完成,配置目录是/etc/proxy,更详细的使用方法请参考手册目录,进一步了解你想要使用的功能.如果安装失败或者你的vps不是linux64位系统,请按照下面的半自动步骤安装: 手动安装 下载proxy下载地址: https://github.com/snail007/goproxy/releases/latest下面以v6.2为例,如果有最新版,请使用最新版链接. 12cd /root/proxy/ wget https://github.com/snail007/goproxy/releases/download/v6.2/proxy-linux-amd64.tar.gz 下载自动安装脚本 1234cd /root/proxy/ wget https://raw.githubusercontent.com/snail007/goproxy/master/install.sh chmod +x install.sh ./install.sh Docker安装 docker 项目根目录的Dockerfile文件用来构建,使用golang 1.10.3,构建基于goproxy的master分支最新版本, 全部大小17.3MB,默认情况下使用master分支,不过可以通过修改配置文件Dockerfile或者使用参数GOPROXY_VERSION指定构建的goproxy版本. 1ARG GOPROXY_VERSION=v5.3 步骤: 克隆仓库,然后cd进入仓库文件夹,执行: 1sudo docker build . 镜像打标签: 1sudo docker tag &lt;上一步的结果ID&gt; snail007/goproxy:latest 运行参数OPTS的值就是传递给proxy的所有参数比如下面的例子启动了一个http服务: 1sudo docker run -d --restart=always --name goproxy -e OPTS=&quot;http -p :33080&quot; -p 33080:33080 snail007/goproxy:latest 查看日志: 1sudo docker logs -f goproxy Windows 直接下载 *.exe 版就行了 使用 http,tcp,udp代理过程会和上级通讯,为了安全我们采用加密通讯,当然可以选择不加密通信通讯,本教程所有和上级通讯都采用加密,需要证书文件.通过下面的命令生成自签名的证书和key文件。proxy keygen -C proxy TCP普通用法 需求：可以通过服务器的28080端口访问到位于本地服务器上的web服务 条件： 本地机器A提供了web服务80端口 有VPS一个,公网IP:22.22.22.22 步骤： 在vps上执行 12proxy bridge -p ":33080" -C proxy.crt -K proxy.keyproxy server -r ":28080@:80" -P "127.0.0.1:33080" -C proxy.crt -K proxy.key 在本地机器A上面执行 1proxy client -P "22.22.22.22:33080" -C proxy.crt -K proxy.key` 完成 UDP普通用法 背景: 公司机器A提供了DNS解析服务,UDP:53端口 有VPS一个,公网IP:22.22.22.22 需求: 在家里能够通过设置本地dns为22.22.22.22,使用公司机器A进行域名解析服务. 步骤: 在vps上执行 12proxy bridge -p ":33080" -C proxy.crt -K proxy.keyproxy server --udp -r ":53@:53" -P "127.0.0.1:33080" -C proxy.crt -K proxy.key 在公司机器A上面执行 1proxy client -P "22.22.22.22:33080" -C proxy.crt -K proxy.key 完成 frp下载 &amp; 安装 根据对应的操作系统及架构，从 Release 页面下载最新版本的程序。 将 frps 及 frps.ini 放到具有公网 IP 的机器上。 将 frpc 及 frpc.ini 放到处于内网环境的机器上。 使用 Contents 通过自定义域名访问部署于内网的web服务 通过ssh访问内网机器 转发DNS查询请求 对外提供简单的文件访问服务 安全地暴露内网服务 点对点内网穿透 总结 通过自定义域名访问部署于内网的web服务有时想要让其他人通过域名访问或者测试我们在本地搭建的 web 服务，但是由于本地机器没有公网 IP，无法将域名解析到本地的机器，通过 frp 就可以实现这一功能，以下示例为 http 服务，https 服务配置方法相同， vhost_http_port 替换为 vhost_https_port， type 设置为 https 即可。 修改 frps.ini 文件，设置 http 访问端口为 8080： 1234# frps.ini[common]bind_port = 7000vhost_http_port = 8080 启动 frps； ./frps -c ./frps.ini 修改 frpc.ini 文件，假设 frps 所在的服务器的 IP 为 x.x.x.x，local_port 为本地机器上 web 服务对应的端口, 绑定自定义域名 www.yourdomain.com: 123456789# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[web]type = httplocal_port = 80custom_domains = www.yourdomain.com 启动 frpc： ./frpc -c ./frpc.ini 将 www.yourdomain.com 的域名 A 记录解析到 IP x.x.x.x，如果服务器已经有对应的域名，也可以将 CNAME 记录解析到服务器原先的域名。 通过浏览器访问 http://www.yourdomain.com:8080 即可访问到处于内网机器上的 web 服务。 通过ssh访问内网机器 修改 frps.ini 文件，这里使用了最简化的配置： 123# frps.ini[common]bind_port = 7000 启动 frps： ./frps -c ./frps.ini 修改 frpc.ini 文件，假设 frps 所在服务器的公网 IP 为 x.x.x.x； 12345678910# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[ssh]type = tcplocal_ip = 127.0.0.1local_port = 22remote_port = 6000 启动 frpc： ./frpc -c ./frpc.ini 通过 ssh 访问内网机器，假设用户名为 test： ssh -oPort=6000 test@x.x.x.x 转发DNS查询请求DNS 查询请求通常使用 UDP 协议，frp 支持对内网 UDP 服务的穿透，配置方式和 TCP 基本一致。 frps 的部署步骤同上。 启动 frps： ./frps -c ./frps.ini 修改 frpc.ini 文件，设置 frps 所在服务器的 IP 为 x.x.x.x，转发到 Google 的 DNS 查询服务器 8.8.8.8 的 udp 53 端口： 12345678910# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[dns]type = udplocal_ip = 8.8.8.8local_port = 53remote_port = 6000 启动 frpc： ./frpc -c ./frpc.ini 通过 dig 测试 UDP 包转发是否成功，预期会返回 www.google.com 域名的解析结果： dig @x.x.x.x -p 6000 www.google.com 对外提供简单的文件访问服务 通过 static_file 插件可以对外提供一个简单的基于 HTTP 的文件访问服务。 frps 的部署步骤同上。 启动 frpc，启用 static_file 插件，配置如下： 123456789101112131415# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[test_static_file]type = tcpremote_port = 6000plugin = static_file# 要对外暴露的文件目录plugin_local_path = /tmp/file# 访问 url 中会被去除的前缀，保留的内容即为要访问的文件路径plugin_strip_prefix = staticplugin_http_user = abcplugin_http_passwd = abc 通过浏览器访问 http://x.x.x.x:6000/static/ 来查看位于 /tmp/file 目录下的文件，会要求输入已设置好的用户名和密码。 安全地暴露内网服务 对于某些服务来说如果直接暴露于公网上将会存在安全隐患。 使用 stcp(secret tcp) 类型的代理可以避免让任何人都能访问到要穿透的服务，但是访问者也需要运行另外一个 frpc。 以下示例将会创建一个只有自己能访问到的 ssh 服务代理。 frps 的部署步骤同上。 启动 frpc，转发内网的 ssh 服务，配置如下，不需要指定远程端口： 1234567891011# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[secret_ssh]type = stcp# 只有 sk 一致的用户才能访问到此服务sk = abcdefglocal_ip = 127.0.0.1local_port = 22 在要访问这个服务的机器上启动另外一个 frpc，配置如下： 123456789101112131415# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[secret_ssh_visitor]type = stcp# stcp 的访问者role = visitor# 要访问的 stcp 代理的名字server_name = secret_sshsk = abcdefg# 绑定本地端口用于访问 ssh 服务bind_addr = 127.0.0.1bind_port = 6000 通过 ssh 访问内网机器，假设用户名为 test： ssh -oPort=6000 test@127.0.0.1 点对点内网穿透 frp 提供了一种新的代理类型 xtcp 用于应对在希望传输大量数据且流量不经过服务器的场景。 使用方式同 stcp 类似，需要在两边都部署上 frpc 用于建立直接的连接。 目前处于开发的初级阶段，并不能穿透所有类型的 NAT 设备，所以穿透成功率较低。穿透失败时可以尝试 stcp 的方式。 frps 除正常配置外需要额外配置一个 udp 端口用于支持该类型的客户端: 1234# frps.ini[common]bind_port = 7000bind_udp_port = 7001 启动 frpc，转发内网的 ssh 服务，配置如下，不需要指定远程端口: 1234567891011# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[p2p_ssh]type = xtcp# 只有 sk 一致的用户才能访问到此服务sk = abcdefglocal_ip = 127.0.0.1local_port = 22 在要访问这个服务的机器上启动另外一个 frpc，配置如下: 123456789101112131415# frpc.ini[common]server_addr = x.x.x.xserver_port = 7000[p2p_ssh_visitor]type = xtcp# xtcp 的访问者role = visitor# 要访问的 xtcp 代理的名字server_name = p2p_sshsk = abcdefg# 绑定本地端口用于访问 ssh 服务bind_addr = 127.0.0.1bind_port = 6000 通过 ssh 访问内网机器，假设用户名为 test: ssh -oPort=6000 test@127.0.0.1 总结 如果我们想要frp承载TCP类型的流量，可以参考 通过ssh访问内网机器，只需要将frpc配置文件里面的端口修改为需要进行代理的端口就行了。再将第6行修改一下就行了，中括号里面内容虽然可以随意填，但是为了鲜明，最好认真命名。 UDP可以参考 转发DNS查询请求 frp 配置文件支持使用系统环境变量进行模版渲染，模版格式采用 Go 的标准格式。由于 frp 目前支持的功能和配置项较多，未在文档中列出的功能可以从完整的示例配置文件中发现。 frps 完整配置文件 frpc 完整配置文件 参见： frp README: https://github.com/fatedier/frp/blob/master/README.md goproxy README: https://github.com/snail007/goproxy/blob/master/README.md]]></content>
+      <categories>
+        <category>proxy</category>
+        <category>network</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
+        <tag>goproxy</tag>
+        <tag>frp</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[新年快乐]]></title>
+    <url>%2F2019%2F02%2F05%2F1%2F</url>
+    <content type="text"><![CDATA[本图片来自Google，侵删]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于本博客的搭建]]></title>
+    <url>%2F2019%2F02%2F04%2F1%2F</url>
+    <content type="text"><![CDATA[劝退三连，不推荐新手尝试，新手请用WordPress，Typecho等动态博客建站，不想折腾的可以使用国内现成平台，如： CSDN（广告比名气多，个人看法），简书 1. 现成的轮子1. Hexo官方文档2. NexT主题文档3. Hexo搭建博客教程 &lt;– Hexo博客搭建教程里面这个可以说是非常详细了4. Hexo-Next搭建个人博客（添加统计访客量以及文章阅读量）4. 图标下载 easyicon6. Leancloud访客统计插件重大安全漏洞修复指南 其实如果只是想保证访客数量不被随意篡改的话，设置一下安全域名就OK了。这篇博文可以不看 –&gt; Leancloud访客统计插件重大安全漏洞修复指南 2. 关于搭建中的一些问题1. Leancloud官网2. GitHub仓库名称 如果想使用自己的域名而不是GitHub提供的 GitHub_username.github.io 域名的话，博客仓库的名称可以不为GitHub_username.github.io3. 操作环境及push分支 推荐所有操作皆在git bash下进行，可以免去很多坑 push分支，填master就行，其他的如：gh-pages 本人未测试,自行斟酌 git clone下来的next主题可能会影响博客的生成，推荐删除 next主题下面的.git,.gitignore和ReadME文件，或者你也可以将next作为一个子模块添加到仓库中 4. 关于SEO优化 网站链接提交，传送门： Google网站站长 Google Search Console 百度搜索资源平台 Google大法好 网站所有者验证 在Google网站站长登陆或注册你的Google账号，添加要验证的网站域名 验证方式（这里只说明网页添加&lt;meta&gt;标签的方法） 添加&lt;meta&gt;标签进行验证网站所有者身份，可以将Google生成的&lt;meta&gt;标签插入到themes\next\layout_partials\head\head.swig前面的那一堆&lt;meta&gt;标签后面，然后hexo clean; hexo d -g 验证所有者身份以后，打开Google Search Console，添加资源，点击添加的域名，在左边找到站点地图，进行站点地图的手动提交 百度，请自行尝试 5. 关于permalink: 为了SEO在一定程度上的优化可以将permalink修改为 12#permalink:year/:month/:day/:title/permalink: :title.html 但是这样有个问题就是所有的博客文件title.html都会产生在，站点根目录下，感觉起来没有条理性，博文越多越无条理性 自定义404页面，可以将404页面的permalink修改为/404 12345---title: 404date: 2019-02-02 21:43:19permalink: /404--- 6. 关闭某个页面的评论，可以在title下面加上：comments: false7. Deploy问题 如果显示fail，那应该就是你仓库名称填错了；如果显示fatal，那应该是权限问题。请检查自己是否有访问仓库的权限。检查一遍无问题以后，那应该是你电脑上存在旧的登陆状态（具体就是以前在电脑上登陆过其他账号）。 清除方法： 把关于GitHub关键字的凭据全部删除再重新登陆 大法保平安]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>config</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[FFmpeg的简单使用]]></title>
+    <url>%2F2019%2F02%2F01%2FFFmpeg%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[1. 安装 在FFmpeg的下载页面下载需要的版本，目前有Linux、Windows、MacOS版本 &amp; Source code 下载传送门： 官网：https://ffmpeg.org/download.html Github: https://github.com/FFmpeg/FFmpeg 从源代码进行构建：123456789sudo apt install yasm#***下载最新版release，假设下载后的release名称为：n4.0.1***name=n4.0.1tar -xvf $namecd ffmpeg./configure --enable-x264#如果有问题，直接 ./configurecore=`cat /proc/cpuinfo| grep "processor"| wc -l`sudo make -j $core &amp;&amp; sudo make install 2. 介绍 从源代码编译后，会安装 ffmpeg、ffprobe、ffplay ffmpeg 主要用于转码 ffprobe 主要用于查看媒体文件信息 ffplay 不仅仅是播放器，同时也是测试 ffmpeg 的 codec 引擎、format 引擎、filter 引擎的工具，并且还可以进行可视化的媒体参数分析 3. 使用1. 初级部分1. 音视频文件转 MP4: ffmpeg -i input.flv -c copy -f mp4 output.mp42. 音视频文件转 FLV: ffmpeg -i input.mp4 -c copy -f flv output.flv 若音频有问题或者封装出错，尝试：ffmpeg -i input.mp4 -vcodec copy -acodec aac -f flv output.flv 3. 提取音视频文件里面的AAC音频流: ffmpeg -i input.mp4 -vn -acodec copy output.aac4. FFmpeg 输出MP3: ffmpeg -i INPUT -acodec libmp3lame -b:a 320k output.mp35. 提取音视频文件里面的H.264视频流: ffmpeg -i output.mp4 -an -vcodec copy -bsf:v h264_mp4toannexb output.h2646. 使用AAC和H.264文件生成mp4文件: ffmpeg -i input.aac -i input.h264 -acodec copy -bsf:a aac_adtstoasc -vcodec copy -f mp4 output.mp47. 对音频文件的编码做转换: ffmpeg -i input.wav -acodec libfdk_aac output.aac8. 添加srt格式的字幕: ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi9. 从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg -i video.mkv -vf subtitles=video.mkv out.avi10. 添加ass格式的字幕：ffmpeg -i video.avi -vf &quot;ass=subtitle.ass&quot; out.avi 或者你可以先将srt转换成ass格式：ffmpeg -i subtitle.srt subtitle.ass11. 添加idx/sub格式的字幕： ffmpeg -i 1.mp4 -i 1.sub -i 1.idx -filter_complex &quot;[0:v][2:s]overlay=0:H-h&quot; -c:v libx264 out.mp4 这个会将图片类型的sub/idx格式字幕烧录进视频文件中。 2. 高级部分 Advance: FFmpeg 流媒体-re: 实时推送 8. 录制 &amp; 发布 RTMP 流 发布RTMP流: ffmpeg -i input.mp4 -c copy -f flv rtmp://localhost/live/class live 为发布点，class 为流名称自定义发布点为 live1、流名称为 class1，并且实时推流ffmpeg -re -i input.mp4 -c copy -f flv -rtmp_app live1 -rtmp_playpath class1 rtmp://localhost 录制RTMP流: ffmpeg -i rtmp://localhost/live/class -c copy -f flv output.flv 9. 录制 HTTP 流 FLV直播流: ffmpeg -i http://localhost/live.flv -c copy -f flv output.flv TS直播流: ffmpeg -i http://localhost/live.ts -c copy -f flv output.flv HLS直播流: ffmpeg -i http://localhost/live.m3u8 -c copy -f flv output.flv 设置 http headers &amp; user_agent &amp; seekable 等参数 : ffmpeg -ss 300 -seekable 1 -user_agent &quot;CC&#39;s Player&quot; -headers &quot;referer: http://localhost/index.html&quot; -i http://localhost/live/class.flv -c copy -f flv -y ouput.flv 10. 录制 &amp; 发布 TCP/UDP 流 发布TCP流: ffmpeg -re -i input.mp4 -c copy -f flv tcp://127.0.0.1:123/live/stream 设置缓冲区为 4096 bit：ffmpeg -re -i input.mp4 -c copy -send_buffer_size 4096 -f flv tcp://127.0.0.1:123/live/stream 录制TCP流: ffmpeg -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv 设置监听端口超时 listen_timeout (5秒): ffmpeg -listen_timeout 5000 -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv设置TCP流拉取超时参数 timeout （200秒）：ffmpeg -timeout 20000000 -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv 发布UDP流：ffmpeg -re -i input.mp4 -c copy -localport 23456 -f flv udp://127.0.0.1:123/live/stream 使用FFmpeg的UDP传输数据时，默认会由系统分配本地端口，使用localport可以设置监听本地端口，抓包可以看到有一个 23456 -&gt; 123 的端口转发 Advance: FFmpeg 桌面录制 11. Windows桌面 录制 参数 作用 draw_mouse 是否采集鼠标指针 show_region 是否绘制采集边界 framerate 设置视频帧率，默认25帧，两个标准值为pal、ntsc video_size 设置视频分辨率 offset_x 采集区域偏移x个像素 offset_y 采集区域偏移x个像素 整个桌面(设定帧率为60)：./ffmpeg.exe -f gdigrab -framerate 60 -i desktop output.mp4 某个窗口（假设窗口名为ffmpeg）：./ffmpeg.exe -f gdigrab -framerate 60 -i title=ffmpeg output.mp4 录制带偏移量的视频：./ffmpeg.exe -f gdigrab -framerate 60 -offset_x 50 -offset_y 50 -video_size 400x400 -i title=ffmpeg output.mp4]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>FFmpeg</category>
+      </categories>
+      <tags>
+        <tag>FFmpeg</tag>
+        <tag>影视</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSH Config]]></title>
+    <url>%2F2019%2F01%2F30%2FSSH_config%2F</url>
+    <content type="text"><![CDATA[在对任何配置文件进行修改之前，最好都做好备份 1. 安装openssh-server：sudo apt-get install openssh-server2. 是否启用密码认证： 1234#YESPasswordAuthentication yes#NOPasswordAuthentication no 3. 是否允许转发 123456#YESAllowTcpForwarding yesX11Forwarding yes#NOAllowTcpForwarding noX11Forwarding no 4. 禁止或允许通过SSH进行连接的用户 1234#允许用户Fred 和 Wilma进行连接AllowUsers Fred Wilma#禁止用户Fred 和 Wilma进行连接DenyUsers Fred Wilma 5. 限制连接数量，可以简单的在UFW里面配置：sudo ufw limit ssh or 1234#修改最大连接数量MaxStartups 2:30:10#修改因用户不活跃而断开的等待时间LoginGraceTime 30 6. 记录更多关于SSH登陆的消息 12345#可以通过修改登陆日志的级别来实现#详细（日志文件在 /var/log/auth.log）LogLevel VERBOSE#粗略LogLevel INFO 7. 是否在登陆时打印警示信息 大部分的发行版（如：CentOS）登陆和欢迎信息控制在：/etc/motd Ubuntu的登陆和欢迎信息控制在：/etc/issue 和 /etc/update-motd.d。 /etc/issue 与 /etc/update-motd.d 区别在于：当一个网络用户或通过串口登录系统 上时, /etc/issue 的文件内容显示在login提示符之前,而 /etc/update-motd.d 里面的内容显示在用户成功登录系统之后。 /etc/update-motd.d里面存放着一些可执行脚本，您可以直接执行看看脚本的效果，也可以通过 chmod -x 脚本名称来达到禁用脚本的效果 执行 /usr/bin/landscape-sysinfo可以查看系统资源使用信息，可以将这一条加入自己谢的脚本里面然后添加到 /etc/update-motd.d，然后再登陆的时候就可以看到系统资源的使用信息 修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。 我们也可以在/etc/issue.net（telnet登陆时显示的信息） or /etc/issue（ssh登陆时输出的信息） 里面修改警告信息12345678910#issue 内各代码意义：\d 本地端时间日期；\l 显示第几个终端机接口；\m 显示硬件等级 (i386/i486/i586/i686…)；\n 显示主机网络名称；\o 显示 domain name；\r 操作系统版本 (相当于 uname -r)\t 显示本地端时间；\s 操作系统名称；\v 操作系统版本。 8. 修改完ssh_config，需要手动重启一下ssh服务来加载配置文件使之生效：sudo systemctl restart ssh 9. 参考链接： https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#Forwarding]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>config</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[修复无法连接VPN和学校校园有线网连接始终651错误]]></title>
+    <url>%2F2019%2F01%2F24%2F%E4%BF%AE%E5%A4%8D%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5VPN%E5%92%8C%E5%AD%A6%E6%A0%A1%E6%A0%A1%E5%9B%AD%E6%9C%89%E7%BA%BF%E7%BD%91%E8%BF%9E%E6%8E%A5%E5%A7%8B%E7%BB%88651%E9%94%99%E8%AF%AF%2F</url>
+    <content type="text"><![CDATA[问题描述：日前个人电脑始终无法连接学校电信有线网络 和 学校VPN，经过个人测试和排查后发现是TCP/IP协议的问题修复： 打开设备管理器，找到下面黄条代表的文件 卸载设备 重启，ok。 治标不治本目前还是没有什么好办法，有的话会及时分享的，也欢迎网友联系我Email：ccmejx@gmail.com]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搭建个人订阅]]></title>
+    <url>%2F2019%2F01%2F22%2F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E8%AE%A2%E9%98%85%2F</url>
+    <content type="text"><![CDATA[说明：ss、ssr、v2ray等分享的链接都是通过base64来进行加密和解密的。同样的，订阅也是如此 创建订阅消息内容 假如我们有这么一条链接：ssr://dwrfe, 如果我们想对其进行base64内容加密的话，可以这样：echo &quot;ssr://dwrfe&quot; | base64 -w 0,输出的信息即为订阅信息 如果两条及以上：echo -e &quot;ssr://dwrfe \nssr://adsfdgf&quot; |base -w 0 其中 -w 0 代表不换行 創建訂閲節點 將輸出的配置文件信息使用tee進行重定向輸出到站點文件夾目錄下的一個無後綴名的文件，或者vim手動編輯 如果訪問失敗，配置文件權限，簡單點：chmod 777 訂閲文件名 ps: 也可以将加密后的内容导入到Github之类的平台上 关于代理的使用与常见问题的汇总 参见：[ShadowsocksR] 大概是萌新也看得懂的SSR功能详细介绍&amp;使用教程]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>proxy</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>proxy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在Ubuntu18.04 上通过PPTP VPN 远程桌面连接Windows]]></title>
+    <url>%2F2019%2F01%2F11%2F%E5%9C%A8Ubuntu18.04%20%E4%B8%8A%E9%80%9A%E8%BF%87PPTP%20VPN%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5Windows%2F</url>
+    <content type="text"><![CDATA[配置VPN并连接配置VPN Setting -&gt; Network -&gt; VPN -&gt; 点击“+” -&gt; Add VPN -&gt; PPTP -&gt; (添加必要的信息，其中Gateway为远程VPN地址) 修改Advanced选项（下面的我自己的方案） 连接VPN 连接VPN时可能出现的问题问题描述： 在用户名等完全正确的情况下无法连接VPN，点击连接，没多久就断了解决方案： 查看日志文件 &amp; google 网卡的日志文件是/var/log/syslog，可以使用 tail -f /var/log/syslog命令来查看 关键字段：LCP: timeout sending Config-Requests 原因： 在引导期间未加载2个必需的netfilter内核模块 多半是有一方的GRE协议未开启，检查服务器防火墙设置。 还可能的原因 解决方案： 1234567#原因1sudo modprobe nf_conntrack_proto_gre nf_conntrack_pptp#原因2sudo iptables -A INPUT -p gre -j ACCEPTsudo iptables -A OUTPUT -p gre -j ACCEPT sudo /etc/init.d/iptables save //保存#我是两个问题都有。。。。 重新连接并测试（OK） 使用FreeRDP进行远程桌面连接 Q &amp; A Q1: 为什么不使用rdesktop进行桌面连接？ A1: rdesktop已经过时，不支持Windows全新的身份认证协议 Q2： Windows全新的身份认证协议是什么？ A2： 所有Windows客户端都有一个凭据缓存，用于对名为NTLM或Windows NT LAN Manager的网络中的服务进行身份验证。RDP支持SSO（单点登录）身份验证，使用户能够使用单个ID和密码登录，以访问已连接的系统。但是，Linux客户端不支持此类型的身份验证，并且它们要求在启动远程会话时通过Rdesktop命令行或通过登录窗口提供凭据。Linux具有Kerberos，这是一种基于初始登录请求访问服务的身份验证机制。Windows Active Directory提供Kerberos基础结构，可以配置Linux以便对AD进行身份验证。这意味着在登录Linux时，您将通过Kerberos TGT（票证授予票证）进行身份验证，该票证用于访问其他服务，例如RDP。运行Rdesktop时，CredSSP将检查您是否拥有Kerberos TGT来访问远程服务，并将其用于远程RDS服务器的SSO身份验证。如果没有Kerberos TGT，则Rdesktop将回退到较低的，不安全的网络连接级别，而不需要网络级别的身份验证。 Q3: 如果我一定要使用它呢？ A3: 参考这篇文章 安装FreeRDP123#两个必须都安装sudo apt install freerdp2-x11sudo apt install freerdp-x11 使用FreeRDP 用法：xfreerdp [file] [options] [/v:&lt;server&gt;[:port]] 示例： xfreerdp -f -v RemoteIP:PORT -u UserName -p Password 常用选项 1234-f：表示全屏（切换全屏的快捷键为：Ctrl + Alt + Enter）-v：远程服务器IP地址加端口号，windows默认远程连接端口号为3389-u：用户名-p：密码 解释 xfreerdp -f -v 192.168.1.5:3389 -u Admin -p 12345 可能会有是否信任证书之类的，直接选择Y或者T表示使用用户名为Admin，密码为12345 的身份登录到远程服务器 附：Windows NTSTATUS Values 其中0xC000006D表示：尝试登录无效。这可能是由于用户名或身份验证信息不正确造成的。]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Ubuntu18.04</category>
+        <category>VPN</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>VPN</tag>
+        <tag>proxy</tag>
+        <tag>Ubuntu18.04</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[为IIS10配置PHP开发环境]]></title>
+    <url>%2F2019%2F01%2F10%2F%E4%B8%BAIIS%E9%85%8D%E7%BD%AEPHP7.1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%2F</url>
+    <content type="text"><![CDATA[1. 准备工作：1. 控制面板 -&gt; 开启或关闭Windows功能 -&gt; IIS -&gt; CGI 2. 下载相应版本的PHP：官网 None-Thread Safe：非线程安全，在执行 时不进行线程是否安全的检查 Thread Safe: 线程安全，在执行时进行线程是否安全的检查，更安全 FastCGI： 执行方式是以单一线程来执行操作，所以不需要进行线程的安全性检查，除去线程安全检查的防护反而可以提高执行效率。 其实个人的话都随便，就算有性能损失，有能有多少呢？这都9102年了。 3. 安裝 Visual Studio 2015 的 Visual C++ 可再发行套件（安装过MicroSoft SQL可以无视这一步，安装过VS2017应该也可以无视，未测试） 其实MicroSoft SQL用的就算VS2015的东西，修修改改又不是不能用VC11 版本对应 VS2012VC14 版本对应 VS2015 2. 配置： 下面以php-7.1.26-Win32-VC14-x64.zip解压到C:\PHP\文件夹例子 1. 修改配置文件php.ini 首先创建C:\PHP\php.ini-production的副本并重命名为php.ini 12345678910#Ctrl + F，然后去掉前面的";"注释#必须修改extension_dir ="C:\PHP\ext" #推荐修改fastcgi.impersonate = 1fastcgi.logging = 0cgi.fix_pathinfo=1cgi.force_redirect = 0date.timezone = "Asia/Taipei"doc_root = "C:\inetpub\wwwroot" 2. 配置IIS *这里有个坑，记得点一下.dll* 3. 测试： 在C:\inetpub\wwwroot（或者自己的一个网站文件夹）下新建一个文件hello.php。输入内容： 123456789&lt;html&gt; &lt;head&gt; &lt;title&gt;World&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;?php echo "Hello world" ?&gt; &lt;/body&gt; &lt;/html&gt; 保存后，打开浏览器，输入地址：http://localhost/hello.php 。如果网页中显示Hello world则说明安装正确。 我们也可以在网页中通过查看hello.php的源代码，如果源代码中没有php代码，也说明安装是正确的。 4. 可能遇到的问题(转自：http://www.mamicode.com/info-detail-2452509.html) 服务器报505错误，原因是缺少visual c++2011 页面显示No input file specified，原因：如果使用ide自带的web服务器，需要把php.ini的doc_root = &quot;C:\inetpub\wwwroot&quot;注释掉 设置php时区，php.ini中修改date.timezone = &quot;Asia/Shanghai&quot; IIS的wwwroot目录在C盘所以需要手动开启写入权限，参考：http://jingyan.baidu.com/article/215817f7fa1bd41eda14239b.html 开启php服务器系统日志，php.ini中设置log_errors = On，并设置error_log = C:/php/error.log。程序中的error_log(&quot;test&quot;)就会把test输出到日志文件中，同时也可以设置display_errors = Off 关闭错误回显，以免因为这些错误所透露的路径、数据库连接、数据表等信息而遭到黑客攻击。转自：https://www.cnblogs.com/yaohunzhanyue/p/7440574.html 使用IIS自带的安装平台进行安装和管理PHP 安装PHP ： 打开IIS -&gt; Web平台安装程序 -&gt; 搜索PHP -&gt; 安装对应版本的PHP （点击绿色圈里面的会新建一个窗口，红色圈里面的会在本页面打开） 安装PHP Manager： 打开IIS -&gt; Web平台安装程序 -&gt; 搜索PHP Manager -&gt; 安装PHP Manager 通过安装.msi包来安装PHP Manager: 下载地址]]></content>
+      <categories>
+        <category>Windows</category>
+        <category>IIS10</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>Windows</tag>
+        <tag>IIS</tag>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[开源文件分享软件]]></title>
+    <url>%2F2019%2F01%2F06%2F%E5%BC%80%E6%BA%90%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB%E8%BD%AF%E4%BB%B6%E5%92%8C%E7%BD%91%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[Nextcloud &amp; Owncloud安装方式： snap安装方式： 12sudo apt install snapsudo snap install nextcloud 网络在线安装： Right-click here and save the file to your computer Upload setup-nextcloud.php to your web space Point your web browser to setup-nextcloud.php on your webspace Follow the instructions and configure Nextcloud Login to your newly created Nextcloud instance! 全手动安装，下载zip文件 docker安装 界面介绍：官方示例，在线查看实时生成功能介绍： 可以在线播放MP4视频，MP3文件 可以挂载外部储存 在线office 有很多在线插件，即点即用 对中文支持挺好 多说无益，自己去官方示例中体验吧 Pydio 安装方式：支持全手动和docker安装 界面介绍：官方示例，在线查看实时生成 功能介绍： 可以在线播放MP4视频，MP3文件 对中文支持不怎么好 界面非常好看（最大的特点） kiftd 安装方式：无需安装，解压文件夹后直接执行解压文件夹一级目录下的*.jar文件（需先安装Java） 界面介绍： 功能介绍： 全中文文档，上手快 使用非常方便、简单、即点即用 界面简洁，就是一个简单的文件分享平台 配置文件介绍：具体查看下载文件夹里面的说明文档的第27页和30页 DictionaryList 功能介绍：简单、好看的文件分享网站 seafile 界面不怎么好看 dzzoffice 不怎么样，一般般，主要面对与使用office的企业用户和学生用户]]></content>
+      <categories>
+        <category>Share</category>
+      </categories>
+      <tags>
+        <tag>Open Source</tag>
+        <tag>Share</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VPS对比与推荐]]></title>
+    <url>%2F2019%2F01%2F02%2FVPS%E6%8E%A8%E8%8D%90%2F</url>
+    <content type="text"><![CDATA[写在开头：VPS这种东西一分钱一分货，加钱你会慢？不再更新 商家太多，只是简单推荐 1. 国内VPS优劣 优点：延迟低 缺点: 需要实名认证还有各种备案，麻烦的一批 带宽很低，大部分都是什么1Mbps，说实话 那有屌用 国内云服务商都会在自己家的镜像里加入检测代理相关的代码或者程序（如果实在想用来做代理之类的话，最好先在网上找一个信得过的在线重装系统的脚本，如果不… 想搞花里呼哨？？ 2. 国外VPS的优劣 优点: 带宽够，流量足 身份审查基本没有，方便，即开即用 有的时候优惠比较大，还有AFF，不像国内的一样各种套路，再怎么给也是优惠卷，代金卷什么的（有屌用？） 访问外网（注意：有的商家并不欢迎机场但不反对个人代理） 缺点: 延迟有点高，具体看什么价位，地区，商家的，一分钱一分货；别想着可以省钱 商家太多，不好抉择 大部分好商家付款方式一般不支持PayPal（也许正是因为这个所以没有被玩坏，没有被友商d） 3. 推荐的VPS商家 排名不分先后 商家 优惠力度 获取条件 DigitalOcean $50 GitHub学生认证 Vultr $20 新用户 or 冲就送 AWS $100 Github学生认证 &amp;&amp; 需要外币卡） RivenCloud 线路优良CN2 支持支付宝等付款方式 PhotonVPS 台湾服务器（非直连） 支付宝，PayPal，外币银行卡都行]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>VPS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[修改Grub启动主题以及默认启动项]]></title>
+    <url>%2F2018%2F12%2F27%2F%E4%BF%AE%E6%94%B9Grub%E5%90%AF%E5%8A%A8%E4%B8%BB%E9%A2%98%E4%BB%A5%E5%8F%8A%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E9%A1%B9%2F</url>
+    <content type="text"><![CDATA[在此之前还可以参考 Ubuntu18.04配置flat-remiax主题 进行 Ubuntu主题的更改 1. 修改Grub主题 打开 Grub theme 选择你需要的主题并下载，推荐主题: Poly light 主题项目: Github 预览： 下拉网页，在 Product 那里一般会有 Description 里面有作者的说明，具体包括安装 与 嘤 用。（一般的话就是直接解压，打开解压文件夹，运行 ./install.sh,具体可能有所不同，自行选择） 名称及路径 名称 路径 主题文件夹 /boot/grub/theme/* 主题的配置文件 /boot/grub/theme/*/theme.txt 主题的背景图片 /boot/grub/theme/*/background.png Grub 文件 /etc/default/grub/ 主题的背景图片支持 *.png *.jpg *.jpeg 等格式 更换图片时请务必注意图片的分辨率，必须小于屏幕的分辨率,否则会崩掉，使用默认主题。推荐 iLoveImg 在线修图 修改完以上路径下的任意一个文件后， 最好使用 sudo update-grub命令更新一下Grub 2. 修改Grub默认启动项 执行 sudo vim /etc/default/grub 找到以下代码块: 1234567GRUB_DEFAULT=0#GRUB_HIDDEN_TIMEOUT=0GRUB_HIDDEN_TIMEOUT_QUIET=trueGRUB_TIMEOUT=2GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`GRUB_CMDLINE_LINUX_DEFAULT=""GRUB_CMDLINE_LINUX="" GRUB_DEFAULT=0 代表默认启动项为第一项。就我个人电脑而言启动顺序如下 1234UbuntuAdvanced Operation for UbuntuWindows boot ManageSystem setup 其中从上而下顺序为0，1，2，3。所以应修改 GRUB_DEFAULT=2, 以此类推。 如果想修改Grub，启动默认等待时间的话可以修改 GRUB_TIMEOUT=2 的值，现在默认等待时间为2秒。 sudo update-grub &amp;&amp; reboot 3. 数据有风险？ 想皮需谨慎。]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>grub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[命令行代理方式]]></title>
+    <url>%2F2018%2F12%2F19%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[Windows命令行代理 因为在Win10上测试时 powershell 和 cmd 进行代理使用的命令是相同的，就不再赘述 标准：12set http_proxy=http://user:password@IP:port set https_proxy=https://user:password@IP:port 范例：12set http_proxy=http://localhost:1080set https_proxy=https://localhost:1080 Linux &amp; Git 命令行代理标准：12export http_proxy = user:password@IP:portexport https_proxy = user:password@IP:port 范例：12export http_proxy = localhost:1080export https_proxy = localhost:1080 验证是否配置成功 ：1curl google.com 如果返回的消息中含有200，301状态码，皆表示已连通]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Windows</category>
+        <category>proxy</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>proxy</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux终端字体上色与常用命令]]></title>
+    <url>%2F2018%2F12%2F16%2FLinux%E7%BB%88%E7%AB%AF%E5%AD%97%E4%BD%93%E4%B8%8A%E8%89%B2%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[1. Linux终端字体加上颜色 echo -e &quot;\033[32;49;1m [DONE] \033[39;49;0m&quot; 输出结果：[DONE] 文本终端的颜色可以使用“ANSI非常规字符序列”来生成。举例： echo -e &quot;\033[44;37;5m ME \033[0m COOL&quot; 以上命令设置背景成为蓝色，前景白色，闪烁光标，输出字符“ME”，然后重新设置屏幕到&gt; 缺省设置，输出字符 “COOL”。“e”是命令 echo 的一个可选项，它用于激活特殊字符的&gt; 解析器。“\033”引导非常规字符序列。“m”意味着设置属性然后结束非常规字符序列，这&gt; 个例子里真正有效的字符是 “44;37;5” 和“0”。修改“44;37;5”可以生成不同颜色的组合，数值和编码的前后顺序没有关系。可以选择的编码如下所示： 编码 颜色/动作 编码 颜色/动作 0 重新设置属性到缺省设置 34 设置蓝色前景 1 设置粗体 35 设置紫色前景 2 设置一半亮度（模拟彩色显示器的颜色） 36 设置青色前景 4 设置下划线（模拟彩色显示器的颜色） 37 设置白色前景 5 设置闪烁 38 在缺省的前景颜色上设置下划线 7 设置反向图象 39 在缺省的前景颜色上关闭下划线 22 设置一般密度 40 设置黑色背景 24 关闭下划线 41 设置红色背景 25 关闭闪烁 42 设置绿色背景 27 关闭反向图象 43 设置棕色背景 30 设置黑色前景 44 设置蓝色背景 31 设置红色前景 45 设置紫色背景 32 设置绿色前景 46 设置青色背景 33 设置棕色前景 47 设置白色背景 49 设置缺省黑色背景 \033[2J 清除屏幕 \033[0q 关闭所有的键盘指示灯 \033[1q 设置“滚动锁定”指示灯 (Scroll Lock) \033[2q 设置“数值锁定”指示灯 (Num Lock) \033[3q 设置“大写锁定”指示灯 (Caps Lock) \033[15:40H 把关闭移动到第15行，40列 \007 发蜂鸣生beep 2. RedHat的字体和背景颜色的改变方法： 命令：PS1=&quot;[\e[32;1m\u@\h \W]\\$&quot; 或 export PS1=&quot;[\e[32;1m\u@\h \W]\\$&quot;两者的区别请查看环境变量的相关资料 解释： \e[32;1m：这就是控制字体和背景颜色的转义字符，30~37是字体颜色、40~47是背景颜色 例子中的32;1m数字的位置是可以对调的如\e[1;32m，如果是在X环境下可以更换一下1的范围0~10，可能有的没用处：0或者不写（\e [0;32m或\e[;32m）显示浅颜色，1：显示高亮 4：加下划线…..如果改后的效果不好，但是又还原不了，那就不写m前面的数字，如\e[32;m，或者直接注销再登陆 \u \h \W：这是一些转义字符，下面详细解释: \d ：代表日期，格式为weekday month date，例如：”Mon Aug 1” \H ：完整的主机名称。例如：我的机器名称为：l，则这个名称就是 l \h ：仅取主机的第一个名字，如上例，则为 l 则被省略 \t ：显示时间为24小时格式，如：HH：MM：SS \T ：显示时间为12小时格式 \A ：显示时间为24小时格式：HH：MM \u ：当前用户的账号名称 \v ：BASH的版本信息 \w ：完整的工作目录名称。家目录会以 ~代替 \W ：利用basename取得工作目录名称，所以只会列出最后一个目录 \# ：下达的第几个命令 \$ ：提示字符，如果是root时，提示符为：# ，普通用户则为：$ \n ：新建一行 字体并不局限于一个颜色，可以有多个颜色： PS1=”[\e[32;1m\u@\e[35;1m\h \e[31;1m\W]\$” 以上两个命令在注销后再登陆就失效了，用下面方法使其永久生效： vim /etc/profile 在“export PATH …..”下面添加一行：export PS1=&quot;[\e[32;1m\u@\h \W]\\\$&quot; 注销再登陆，就成功了，如果没生效，使用source /etc/profile 命令试试，或者直接重启机器。 3. 常见Command Command 主要用途 Command 主要用途 basename 去掉文件名的目录和后缀 dirname 截取给定路径的目录部分 swap on 开启交换分区 swap off 关闭交换分区 ezfsck 检查ext分区系统 resizezfs 调整ext分区大小 fsck 检查、修复 linux 文件系统 dmesg 显示开机信息 partprobe 更新内核分区表信息 mpstat 各个CPU的状态统计 chkconfig 管理Linux开机启动项 vmstat 虚拟内存统计 iostat 系统IO信息 sar 全面获取cpu、内存等历史活动信息(安装出错?) ipcs 用于报告Linux中进程间通信设施的状态，显示的信息包括消息列表、共享内存和信号量的信息 ipcrm 删除消息队列、共享内存、信号灯 ltrace 跟踪进程的库函数调用,显现出哪个库函数被程序调用 strace 跟踪程序的每个系统调用 ansible 基于ssh的自动化部署 pstree 像tree一样打印进程树 4. 说明：1. basename Usage: basename NAME [SUFFIX]or: basename OPTION… NAME… PATH basename dirname “/usr/lib” “/usr” “lib” “/usr/“ “/“ “usr” “usr” “.” “usr” “/“ “/“ “/“ “.” “.” “.” “..” “.” “..” 2. dirname： Usage: dirname [OPTION] NAME… 12345#!/bin/sh # 跳转到脚本所在目录 cd $(dirname "$0") || exit 1 # 剩下的部分 # 可以跳转到脚本所在目录 root@l：~$ dirname /usr/bin/sort /usr/bin root@l：~$ dirname stdio.h . root@l：~$ dirname /usr/bin /usr root@l：~$ dirname /usr/bin/ /usr 123456789101112131415root@l：~$ pathname=/usr/bin/sort; echo $(dirname $pathname) $&#123;pathname%/*&#125; /usr/bin /usr/binroot@l：~$ pathname=/usr/bin/; echo $(dirname $pathname) $&#123;pathname%/*&#125;/usr /usr/bin#与上一个路径名相比少了一个斜杠root@l：~$ pathname=/usr/bin; echo $(dirname $pathname) $&#123;pathname%/*&#125; /usr /usrroot@l：~$ pathname=/usr/; echo $(dirname $pathname) $&#123;pathname%/*&#125; / /usrroot@l：~$ pathname=/usr; echo $(dirname $pathname) $&#123;pathname%/*&#125; /root@l：~$ pathname=/; echo $(dirname $pathname) $&#123;pathname%/*&#125; /root@l：~$ pathname=stdio.h; echo $(dirname $pathname) $&#123;pathname%/*&#125; . stdio.h 3. ipcs Usage: ipcs [ -m] [ -q] [ -s] [ -S] [ -P] [ -1] [ -a | -b -c -o -p -r -t] [ -T] [ -C CoreFile] [ -N Kernel ] [ -X ] [ -@ [ WparName ] ] ipcs 命令往标准输出写入一些关于活动进程间通信工具的信息。如果没有指定标志，ipcs 命令用简短格式写入一些关于当前活动消息队列、共享内存段、信号量、远程队列和本地队列标题。 File 描述 /usr/lib/boot/unix 指定系统内核映像 /dev/mem 指定内存 /etc/passwd 指定用户名 /etc/group 指定组名 /usr/include/sys/ipc.h 包含头文件 4. ipcrm Usage: ipcrm [ -M key | -m id | -Q key | -q id | -S key | -s id ] … 参数: -M 以shmkey删除共享内存 -m 以shmid删除共享内存 -Q 以msgkey删除消息队列 -q 以msgid删除消息队列 -S 以semkey删除信号灯 -s 以semid删除信号灯 5. ltrace &amp; strace相同点： ltrace与strace都可以指定PID,即对运行中的程序进行跟踪. ltrace -p PID与strace -p PID ltrace与strace都可以跟踪程序fork或clone子进程.ltrace是用-f参数,而strace是用-f(fork/clone)和-F(vfork). 不同点: strace在跟踪系统调用的时候不需要动态库,而ltrace是根据动态库来分析程序运行的。所以ltrace也只能跟踪动态库,不能跟踪静态库。事实上我们用ltrace和strace都可以发现程序在哪个系统调用时发生了性能瓶径。ltrace用-T,而strace也用-T.]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在VPS上挂载digitalocean space空间]]></title>
+    <url>%2F2018%2F12%2F15%2F%E5%9C%A8VPS%E4%B8%8A%E6%8C%82%E8%BD%BDdigital%20ocean%20space%20%E7%A9%BA%E9%97%B4%2F</url>
+    <content type="text"><![CDATA[Digitalocean Space 最低每月 5$（250G储存空间，1T流量），可以随时增加容量大小，支持Amazon S3块储存协议 而且现在注册的话，新用户会自动赠送100$ , 有效期2个月，如果是学生的话还可以再增加50$，有效期12个月使用s3fs-fuse将space挂载为一个相当于本地硬盘的云盘 同样也可以挂载在VPS之类上进行扩容挂载： apt install s3fs 新建一个space，获取access key &amp; secret key 123456SPACES_KEY=access_keySPACES_SECRET=secret_keyecho $SPACES_KEY:$SPACES_SECRET &gt; ~/.passwd-s3fschmod 600 ~/.passwd-s3fsmkdir -p /path/to/local/directorys3fs your-space /path/to/local/directory -o url=https://nyc3.digitaloceanspaces.com -o use_cache=/tmp 一些问题 曾经挂载出错的目录不能直接进行二次挂载(先umount，再mount或者直接remount) 成功的命令 (仅供参考)：s3fs ./wen /root/space -o url=https://sfo2.digitaloceanspaces.com -o use_cache=/tmp https://aws.amazon.com/cn/blogs/china/s3fs-amazon-ec2-linux/ 感想：一点也不香，直接cp的话放不进大文件可以放小文件，其他的未做测试参见 ：官方QA]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>space</category>
+      </categories>
+      <tags>
+        <tag>config</tag>
+        <tag>VPS</tag>
+        <tag>space</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[WSL配置Clion开发环境]]></title>
+    <url>%2F2018%2F12%2F14%2FWSL%E9%85%8D%E7%BD%AEClion%E4%BB%A5%E5%8F%8AVS%20code%20C%2B%2B%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%2F</url>
+    <content type="text"><![CDATA[思路：修改WSL默认的ssh监听端口为 2222 。因为WSL默认的监听端口为 22,与Windows的默认ssh监听端口相同，因此会产生冲突 开启Linux子系统从软件商店里安装Ubuntu18.04 更改软件源 在 /etc/ssh/sshd_config 配置文件中找到下面相关配置（使用vim编辑sudo vim /etc/ssh/sshd_config） 1234# Authentication:LoginGraceTime 120PermitRootLogin prohibit-passwordStrictModes yes 更改为： 12345# Authentication:LoginGraceTime 120#PermitRootLogin prohibit-passwordPermitRootLogin yesStrictModes yes 重启ssh: sudo service ssh restart]]></content>
+      <categories>
+        <category>开发环境</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>Clion</tag>
+        <tag>WSL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu18.04配置Flat-remiax主题]]></title>
+    <url>%2F2018%2F09%2F27%2FUbuntu18.04%E9%85%8D%E7%BD%AEflat-remiax%E4%B8%BB%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[Update at Sun May 5 09:34:13 CST 2019 笔记本电源管理工具 slimbook 安装： 12sudo add-apt-repository ppa:slimbook/slimbooksudo apt update &amp;&amp; sudo apt install slimbookbattery Update at 2019年 04月 30日 星期二 19:42:39 CST 解决笔记本触摸板 右键点击无效 问题： 1gsettings set org.gnome.desktop.peripherals.touchpad click-method areas Update at 2019年 04月 21日 星期日 12:29:05 CST Ubuntu18.04 打开 https://extensions.gnome.org/ 时提示 Gnome shell 版本无法识别的 红色提示信息时，可以通过sudo apt install chrome-gnome-shell 来安装配置软件来解决这个问题，其他发行版的具体操作看红色提示信息里面的 documents。然后就可以直接点击网页上面的 ON/OFF 按钮来快捷安装和启用拓展了。 Ubuntu18.04 现在不需要第11步了，即隐藏 dash to dock 。应该是修 BUG 了。（透明色：#00FFFFFF） Update at Thu Feb 14 20:16:36 CST 2019 关于Ubuntu18.04 和 Ubuntu16.04： Ubuntu18.04 默认的桌面环境为Gnome，Ubuntu16.04为Unity 此教程目前只适用于Gnome桌面（Ubuntu16.04可以通过更换默认桌面为Gnome来实现） 应该是Ubuntu18.04自带的Gnome桌面精简了一些东西，从而导致主题安装不完全（要不然也不要微调了 :-) ） Ubuntu18.04不想折腾的话，安装主题可以现在网站上挑然后再通过系统自带的软件商店搜索安装，修改过默认桌面的Ubuntu16.04可以直接在网站上点击安装，没有必要去软件商店搜索（再说了，你也搜索不到 :-)） Update at Mon Jan 28 00:30:22 CST 2019刚刚发现就算是修改为使用集显(Power Saving Mode)，进行开关机也不会卡，甚至感觉比仅用独显更好，更流畅; 而且现在修改Nvidia X Setting里面的模式 只需要重新登录就好了，并不需要像以前那样重启电脑 1. 校对BIOS时间: 如果是Win10 和 Ubuntu 双系统的话，建议先执行这一条 1timedatectl set-local-rtc 1 --adjust-system-clock 2. 以下操作翻墙体验更好, 下载electron-ssr 如果下载下面的软件和更新的时侯，速度很慢的话，可以考虑终端代理 12#安装electron-ssr依赖项sudo apt install -y gconf2 gconf-service libappindicator1 首先安装electron-ssr并且配置好节点，点击图标，找到导出http代理设置，点击并且复制到终端并执行，再继续之前的工作，应该会快一点。 如果没有找到选项的话，手动设置一下： 12export http_proxy=localhost:12333 export http_proxy=localhost:12333 这个是electorn-ssr默认的http代理方式，12333 是默认的http代理端口，可以自己修改Ps：话说用了这么久最后发现在Windows下用electron-ssr体验并不好，Linux下体验很好 12# Github （或不是最新版本）wget https://github.com/erguotou520/electron-ssr/releases/download/v0.2.6/electron-ssr-0.2.6.deb 自建镜像点（速度快，也许并不是 Github 上最新版release，但保持每日更新，自行斟酢）:https://list.ccatk.tw/?dir=Download 3. 安装chrome: 1wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &amp;&amp; sudo dpkg -i *.deb 4. 卸载firefox以及其他无用的链接方式: 12345sudo apt-get remove unity-webapps-commonsudo apt-get remove firefox*sudo apt-get remove onboard deja-dupsudo apt-get remove gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-installsudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot 5. 安装git等： 1sudo apt install git vim curl tree glances ncdu mc openssh-server ranger -y 6. 安装gnome-tweak-tool： 1sudo apt-get install gnome-tweak-tool 7. 打开软件商城 –&gt; 附加组件 –&gt; 安装： Ps: 在此之前需要先打开这个网站 https://extensions.gnome.org/去安装chrome插件和仓库源, 然后sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y . 如果直接search插件就有的话，当我没说。sudo apt install chrome-gnome-shell在安装 system-monitor 时请先安装依赖项：sudo apt-get install gir1.2-gtop-2.0 gir1.2-networkmanager-1.0 gir1.2-clutter-1.0 user themes Dash to Dock Hide Top Bar Coverflow Alt-Tab gnome-shell-audio-output-switcher impatience night-light-slider places-status-indicator refresh-wifi-connections system-monitor Bing Wallpaper Changer 8. 安装guake： sudo apt-get install guake -y 9. 安装配置oh-my-zsh： 12sudo apt-get install zsh sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 推荐zsh theme：agnoster 修复oh-my-zsh在某些环境下显示不完整：sudo apt install -y fonts-powerline 更改默认shell为zsh：chsh -s /bin/zsh 10. 安装flat-remix主题： apt方式（推荐） 123456sudo add-apt-repository ppa:daniruiz/flat-remixsudo apt-get update#sudo apt install flat-remaix-*sudo apt-get install flat-remixsudo apt install flat-remix-gnomesudo apt install flat-remix-gtk 手撸方式（hehe） 123456cd /tmp rm -rf flat-remix-gnome-theme git clone https://github.com/daniruiz/flat-remix-gnome mkdir -p ~/.themes cp -r /tmp/flat-remix-gnome/Flat-Remix* ~/.themes gsettings set org.gnome.shell.extensions.user-theme name "Flat-Remix" 11. 微调：Ubuntu18.04锁屏后隐藏dask to dock： 将扩展迁移到当前用户目录下： 1sudo mv /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com .local/share/gnome-shell/extensions 变更权限： 1sudo chown -R $USER:$USER ~/.local/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com 12. 更换ubuntu输入密码时的紫色界面: 编辑以下这个 CSS 文件: sudo vim /etc/alternatives/gdm3.css 找到 #lockDialogGroup 这一项，原始的应该是这样的: 1234#lockDialogGroup&#123;background: #2c001e url(resource:///org/gnome/shell/theme/noise-texture.png);background-repeat: repeat;&#125; 修改配置文件为： 123456#lockDialogGroup &#123;background: url(/*自己喜欢的图片的路径*/);background-repeat: no-repeat;background-size: cover;background-position: center;&#125; 最后重启: reboot 13. 安装spacevim： 不一样的vim curl -sLf https://spacevim.org/install.sh | bash &amp;&amp; vim 14. 安装Google fcitx输入法1sudo apt-get -y install fcitx fcitx-googlepinyin im-config &amp;&amp; sudo im-config 15. For Nvidia desktop User: 因为大部分笔记本一般会带有独显之类的，所以对于双卡用户来说使用Nvidia独显作为唯一输出显卡，关机重启不会卡，集显会卡一分钟再进行关机重启之类的。这个卡的时间长短看机型吧 Software&amp;Updates -&gt; Additional Drivers -&gt; Using recommended driver (tested) -&gt; Apply changes -&gt; Setting “Nvidia X Server Setting” -&gt; reboot You can see changs in “System Settings -&gt; Details -&gt; About -&gt; Graphics” 但是独显也有弊端：能耗高，发热大。哎，真香！(especially in machine learning &amp; deep learning) Ps:如果想安装其他的主题，操作差不多]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu18.04</tag>
+        <tag>theme</tag>
+      </tags>
+  </entry>
+</search>

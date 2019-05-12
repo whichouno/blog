@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+<!--Google SEO优化-->
+<meta name="google-site-verification" content="SrsInNUnd5avPjonJfK8DCpTb3EwdYd-eMaOhwiqHAM">
+<!--Bing SEO优化-->
+<meta name="msvalidate.01" content="F22D650D11D294DF8D3528450CFEF5B1">
+<!--添加顶部加载条-->
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<!--修改加载条颜色，默认为 粉色。。。-->
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+<!--添加 F12 控制台声明信息-->
+<script>
+    (function  info() {
+        console.info("免责声明：\n" +
+            "\t1. 本博客只是分享技术的平台。\n" +
+            "\t2. 技术本身并没有错，错的是人。就如同刀一般，用的好，那是救人命的手术刀；用不好那就是屠刀。\n" +
+            "\t3. 博客内容若有敏感词汇，还请第一时间联系 ccmejx@gmail.com 并附上详细内容，我会在第一时间处理。\n" +
+            "\t附24字真言：\n" +
+            "\t\t富强、民主、文明、和谐\n" +
+            "\t\t自由、平等、公正、法治\n" +
+            "\t\t爱国、敬业、诚信、友善\n")
+    })();
+</script>
+
+<!--设置加密访问-->
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/96memo.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32memo.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16memo.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/memo.ico?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Update at Sun May  5 09:34:13 CST 2019  笔记本电源管理工具 slimbook 安装： 12sudo add-apt-repository ppa:slimbook/slimbooksudo apt update &amp;amp;&amp;amp; sudo apt install slimbookbattery      Update at 2019年 04月 30日">
+<meta name="keywords" content="Ubuntu18.04,theme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu18.04配置Flat-remiax主题">
+<meta property="og:url" content="https://iitii.github.io/2018/09/27/Ubuntu18.04配置flat-remiax主题/index.html">
+<meta property="og:site_name" content="Hello Memo">
+<meta property="og:description" content="Update at Sun May  5 09:34:13 CST 2019  笔记本电源管理工具 slimbook 安装： 12sudo add-apt-repository ppa:slimbook/slimbooksudo apt update &amp;amp;&amp;amp; sudo apt install slimbookbattery      Update at 2019年 04月 30日">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-05T01:45:41.886Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu18.04配置Flat-remiax主题">
+<meta name="twitter:description" content="Update at Sun May  5 09:34:13 CST 2019  笔记本电源管理工具 slimbook 安装： 12sudo add-apt-repository ppa:slimbook/slimbooksudo apt update &amp;amp;&amp;amp; sudo apt install slimbookbattery      Update at 2019年 04月 30日">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hello Memo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://iitii.github.io/2018/09/27/Ubuntu18.04配置flat-remiax主题/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Ubuntu18.04配置Flat-remiax主题 | Hello Memo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!--爱心效果-->
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello Memo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-aria">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/Aria/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Aria</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iitii.github.io/2018/09/27/Ubuntu18.04配置flat-remiax主题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IITII">
+      <meta itemprop="description" content="山野之人，粗鄙之语">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello Memo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Ubuntu18.04配置Flat-remiax主题
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-27 00:12:55" itemprop="dateCreated datePublished" datetime="2018-09-27T00:12:55+08:00">2018-09-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-05 09:45:41" itemprop="dateModified" datetime="2019-05-05T09:45:41+08:00">2019-05-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2018/09/27/Ubuntu18.04配置flat-remiax主题/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/09/27/Ubuntu18.04配置flat-remiax主题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2018/09/27/Ubuntu18.04配置flat-remiax主题/" class="leancloud_visitors" data-flag-title="Ubuntu18.04配置Flat-remiax主题">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+                <span>℃</span>
+            </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<blockquote>
+<p><em>Update at Sun May  5 09:34:13 CST 2019</em></p>
+<ul>
+<li>笔记本电源管理工具 <strong>slimbook</strong></li>
+<li>安装： <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:slimbook/slimbook</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install slimbookbattery</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><em>Update at 2019年 04月 30日 星期二 19:42:39 CST</em></p>
+<ul>
+<li>解决笔记本触摸板 <strong>右键点击无效</strong> 问题： <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings <span class="built_in">set</span> org.gnome.desktop.peripherals.touchpad click-method areas</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><em>Update at 2019年 04月 21日 星期日 12:29:05 CST</em></p>
+<ul>
+<li><strong>Ubuntu18.04</strong> 打开 <a href="https://extensions.gnome.org/" target="_blank" rel="noopener">https://extensions.gnome.org/</a> 时提示 <em>Gnome shell</em> 版本无法识别的 <strong>红色提示信息</strong>时，可以通过<code>sudo apt install chrome-gnome-shell</code> 来安装配置软件来解决这个问题，其他发行版的具体操作看红色提示信息里面的 <strong>documents</strong>。然后就可以直接点击网页上面的 <strong>ON/OFF</strong> 按钮来快捷安装和启用拓展了。</li>
+<li><strong>Ubuntu18.04</strong> 现在不需要第11步了，即隐藏 <em>dash to dock</em> 。应该是修 <em>BUG</em> 了。（透明色：#00FFFFFF）</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><em>Update at Thu Feb 14 20:16:36 CST 2019</em>  </p>
+<ul>
+<li>关于Ubuntu18.04 和 Ubuntu16.04：  <ol>
+<li>Ubuntu18.04 默认的桌面环境为Gnome，Ubuntu16.04为Unity  </li>
+<li>此教程目前只适用于Gnome桌面（Ubuntu16.04可以通过更换默认桌面为Gnome来实现）  </li>
+<li>应该是Ubuntu18.04自带的Gnome桌面精简了一些东西，从而导致主题安装不完全（要不然也不要微调了 <strong>:-)</strong> ）</li>
+<li><del>Ubuntu18.04不想折腾的话，安装主题可以现在网站上挑然后再通过系统自带的软件商店搜索安装，修改过默认桌面的Ubuntu16.04可以直接在网站上点击安装，没有必要去软件商店搜索（再说了，你也搜索不到 <strong>:-)</strong>）</del></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><em>Update at Mon Jan 28 00:30:22 CST 2019</em><br>刚刚发现就算是修改为使用集显(<code>Power Saving Mode</code>)，进行开关机也不会卡，甚至感觉比仅用独显更好，更流畅; 而且现在修改<strong>Nvidia X Setting</strong>里面的模式 只需要重新登录就好了，并不需要像以前那样重启电脑</p>
+</blockquote>
+<hr>
+<h3 id="1-校对BIOS时间"><a href="#1-校对BIOS时间" class="headerlink" title="1. 校对BIOS时间:"></a>1. 校对BIOS时间:</h3><blockquote>
+<p>如果是Win10 和 Ubuntu 双系统的话，建议先执行这一条<br>   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl <span class="built_in">set</span>-local-rtc 1 --adjust-system-clock</span><br></pre></td></tr></table></figure></div></p>
+</blockquote>
+<h3 id="2-以下操作翻墙体验更好-下载electron-ssr"><a href="#2-以下操作翻墙体验更好-下载electron-ssr" class="headerlink" title="2. 以下操作翻墙体验更好, 下载electron-ssr"></a>2. <del>以下操作翻墙体验更好, 下载electron-ssr</del></h3><ul>
+<li><p>如果下载下面的软件和更新的时侯，速度很慢的话，可以考虑终端代理</p>
+  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装electron-ssr依赖项</span></span><br><span class="line">sudo apt install -y gconf2 gconf-service libappindicator1</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><p>首先安装<code>electron-ssr</code>并且配置好节点，点击图标，找到导出http代理设置，点击并且复制到终端并执行，再继续之前的工作，应该会快一点。</p>
+<p>如果没有找到选项的话，手动设置一下：</p>
+   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=localhost:12333 </span><br><span class="line"><span class="built_in">export</span> http_proxy=localhost:12333</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>这个是<code>electorn-ssr</code>默认的<code>http</code>代理方式，<strong>12333</strong> 是默认的http代理端口，可以自己修改<br>Ps：<del>话说用了这么久最后发现在Windows下用electron-ssr体验并不好，Linux下体验很好</del>  </p>
+   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Github （或不是最新版本）</span></span><br><span class="line">wget https://github.com/erguotou520/electron-ssr/releases/download/v0.2.6/electron-ssr-0.2.6.deb</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+</li>
+<li><p>自建镜像点（速度快，也许并不是 Github 上最新版release，但保持每日更新，自行斟酢）:<br><a href="https://list.ccatk.tw/?dir=Download" target="_blank" rel="noopener">https://list.ccatk.tw/?dir=Download</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-安装chrome"><a href="#3-安装chrome" class="headerlink" title="3. 安装chrome:"></a>3. 安装chrome:</h3>  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &amp;&amp; sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure></div>
+<h3 id="4-卸载firefox以及其他无用的链接方式"><a href="#4-卸载firefox以及其他无用的链接方式" class="headerlink" title="4. 卸载firefox以及其他无用的链接方式:"></a>4. 卸载firefox以及其他无用的链接方式:</h3>   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove unity-webapps-common</span><br><span class="line">sudo apt-get remove firefox*</span><br><span class="line">sudo apt-get remove onboard deja-dup</span><br><span class="line">sudo apt-get remove gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-install</span><br><span class="line">sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot</span><br></pre></td></tr></table></figure></div>
+<h3 id="5-安装git等："><a href="#5-安装git等：" class="headerlink" title="5. 安装git等："></a>5. 安装git等：</h3>  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git vim curl tree glances ncdu mc openssh-server ranger -y</span><br></pre></td></tr></table></figure></div>
+<h3 id="6-安装gnome-tweak-tool："><a href="#6-安装gnome-tweak-tool：" class="headerlink" title="6. 安装gnome-tweak-tool："></a>6. 安装gnome-tweak-tool：</h3>  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-tweak-tool</span><br></pre></td></tr></table></figure></div>
+<h3 id="7-打开软件商城-–-gt-附加组件-–-gt-安装："><a href="#7-打开软件商城-–-gt-附加组件-–-gt-安装：" class="headerlink" title="7. 打开软件商城 –&gt; 附加组件 –&gt; 安装："></a>7. 打开软件商城 –&gt; 附加组件 –&gt; 安装：</h3><blockquote>
+<p>Ps: 在此之前需要先打开这个<a href="https://extensions.gnome.org/" target="_blank" rel="noopener">网站 https://extensions.gnome.org/</a>去安装chrome插件和仓库源, 然后sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y . <del>如果直接search插件就有的话，当我没说。<code>sudo apt install chrome-gnome-shell</code></del><br>在安装 <em>system-monitor</em> 时请先安装依赖项：<code>sudo apt-get install gir1.2-gtop-2.0 gir1.2-networkmanager-1.0  gir1.2-clutter-1.0</code></p>
+</blockquote>
+<ol>
+<li><a href="https://extensions.gnome.org/extension/19/user-themes/" target="_blank" rel="noopener">user themes</a></li>
+<li><a href="https://extensions.gnome.org/extension/307/dash-to-dock/" target="_blank" rel="noopener">Dash to Dock</a></li>
+<li><a href="https://extensions.gnome.org/extension/545/hide-top-bar/" target="_blank" rel="noopener">Hide Top Bar</a></li>
+<li><a href="https://extensions.gnome.org/extension/97/coverflow-alt-tab/" target="_blank" rel="noopener">Coverflow Alt-Tab</a></li>
+<li><a href="https://extensions.gnome.org/extension/1028/gnome-shell-audio-output-switcher/" target="_blank" rel="noopener">gnome-shell-audio-output-switcher</a></li>
+<li><a href="https://extensions.gnome.org/extension/277/impatience/" target="_blank" rel="noopener">impatience</a></li>
+<li><a href="https://extensions.gnome.org/extension/1276/night-light-slider/" target="_blank" rel="noopener">night-light-slider</a></li>
+<li><a href="https://extensions.gnome.org/extension/8/places-status-indicator/" target="_blank" rel="noopener">places-status-indicator</a></li>
+<li><a href="https://extensions.gnome.org/extension/905/refresh-wifi-connections/" target="_blank" rel="noopener">refresh-wifi-connections</a></li>
+<li><a href="https://extensions.gnome.org/extension/120/system-monitor/" target="_blank" rel="noopener">system-monitor</a></li>
+<li><a href="https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/" target="_blank" rel="noopener">Bing Wallpaper Changer</a></li>
+</ol>
+<h3 id="8-安装guake："><a href="#8-安装guake：" class="headerlink" title="8. 安装guake："></a>8. 安装guake：</h3><ul>
+<li><code>sudo apt-get install guake -y</code></li>
+</ul>
+<h3 id="9-安装配置oh-my-zsh："><a href="#9-安装配置oh-my-zsh：" class="headerlink" title="9. 安装配置oh-my-zsh："></a>9. 安装配置oh-my-zsh：</h3>   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh </span><br><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure></div>
+<ol>
+<li><p>推荐<code>zsh theme</code>：<code>agnoster</code></p>
+</li>
+<li><p>修复<code>oh-my-zsh</code>在某些环境下显示不完整：<code>sudo apt install -y fonts-powerline</code></p>
+</li>
+<li><p>更改默认<code>shell</code>为<code>zsh</code>：<code>chsh -s /bin/zsh</code></p>
+</li>
+</ol>
+<h3 id="10-安装flat-remix主题："><a href="#10-安装flat-remix主题：" class="headerlink" title="10. 安装flat-remix主题："></a>10. 安装flat-remix主题：</h3><blockquote>
+<p> apt方式（推荐）</p>
+</blockquote>
+   <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:daniruiz/flat-remix</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="comment">#sudo apt install flat-remaix-*</span></span><br><span class="line">sudo apt-get install flat-remix</span><br><span class="line">sudo apt install flat-remix-gnome</span><br><span class="line">sudo apt install flat-remix-gtk</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p><del>手撸方式（hehe）</del></p>
+</blockquote>
+ <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp </span><br><span class="line">rm -rf flat-remix-gnome-theme </span><br><span class="line">git <span class="built_in">clone</span> https://github.com/daniruiz/flat-remix-gnome </span><br><span class="line">mkdir -p ~/.themes </span><br><span class="line">cp -r /tmp/flat-remix-gnome/Flat-Remix* ~/.themes </span><br><span class="line">gsettings <span class="built_in">set</span> org.gnome.shell.extensions.user-theme name <span class="string">"Flat-Remix"</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="11-微调：Ubuntu18-04锁屏后隐藏dask-to-dock："><a href="#11-微调：Ubuntu18-04锁屏后隐藏dask-to-dock：" class="headerlink" title="11. 微调：Ubuntu18.04锁屏后隐藏dask to dock："></a>11. 微调：Ubuntu18.04锁屏后隐藏<code>dask to dock</code>：</h3><ol>
+<li><p>将扩展迁移到当前用户目录下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com .<span class="built_in">local</span>/share/gnome-shell/extensions</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>变更权限：</p>
+  <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="variable">$USER</span>:<span class="variable">$USER</span> ~/.<span class="built_in">local</span>/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<h3 id="12-更换ubuntu输入密码时的紫色界面"><a href="#12-更换ubuntu输入密码时的紫色界面" class="headerlink" title="12. 更换ubuntu输入密码时的紫色界面:"></a>12. 更换ubuntu输入密码时的紫色界面:</h3><ol>
+<li><p>编辑以下这个 CSS 文件: <code>sudo vim /etc/alternatives/gdm3.css</code></p>
+</li>
+<li><p>找到 #lockDialogGroup 这一项，原始的应该是这样的:</p>
+ <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#lockDialogGroup&#123;</span><br><span class="line">background: #2c001e url(resource:///org/gnome/shell/theme/noise-texture.png);</span><br><span class="line">background-repeat: repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<ul>
+<li><p>修改配置文件为：</p>
+ <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#lockDialogGroup &#123;</span><br><span class="line">background: url(/*自己喜欢的图片的路径*/);</span><br><span class="line">background-repeat: no-repeat;</span><br><span class="line">background-size: cover;</span><br><span class="line">background-position: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<ul>
+<li>最后重启: <code>reboot</code></li>
+</ul>
+<h3 id="13-安装spacevim："><a href="#13-安装spacevim：" class="headerlink" title="13. 安装spacevim："></a>13. 安装spacevim：</h3><blockquote>
+<p>不一样的vim</p>
+<p><code>curl -sLf https://spacevim.org/install.sh | bash &amp;&amp; vim</code></p>
+</blockquote>
+<h3 id="14-安装Google-fcitx输入法"><a href="#14-安装Google-fcitx输入法" class="headerlink" title="14. 安装Google fcitx输入法"></a>14. 安装Google fcitx输入法</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install fcitx fcitx-googlepinyin im-config &amp;&amp; sudo im-config</span><br></pre></td></tr></table></figure></div>
+<h3 id="15-For-Nvidia-desktop-User"><a href="#15-For-Nvidia-desktop-User" class="headerlink" title="15. For Nvidia desktop User:"></a>15. For Nvidia desktop User:</h3><blockquote>
+<p>因为大部分笔记本一般会带有独显之类的，所以对于双卡用户来说使用Nvidia独显作为唯一输出显卡，关机重启不会卡，集显会卡一分钟再进行关机重启之类的。<del>这个卡的时间长短看机型吧</del></p>
+</blockquote>
+<ol>
+<li><p><strong>Software&amp;Updates -&gt; Additional Drivers -&gt; Using recommended driver (tested) -&gt; Apply changes -&gt; Setting “Nvidia X Server Setting” -&gt; reboot</strong></p>
+</li>
+<li><p><strong>You can see changs in “System Settings -&gt; Details -&gt; About -&gt; Graphics”</strong></p>
+</li>
+<li><p>但是独显也有弊端：能耗高，发热大。<del>哎，真香！(especially in machine learning &amp; deep learning)</del></p>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>Ps:如果想安装其他的主题，操作差不多</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu18-04/" rel="tag"># Ubuntu18.04</a>
+          
+            <a href="/tags/theme/" rel="tag"># theme</a>
+          
+        </div>
+      
+
+      <!--添加版权信息-->
+      <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2018/09/27/Ubuntu18.04配置flat-remiax主题/">Ubuntu18.04配置Flat-remiax主题</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 IITII 的个人博客">IITII</a></p>
+  <p><span>发布时间:</span>2018年09月27日 - 00:09</p>
+  <p><span>最后更新:</span>2019年05月05日 - 09:05</p>
+  <p><span>原始链接:</span><a href="/2018/09/27/Ubuntu18.04配置flat-remiax主题/" title="Ubuntu18.04配置Flat-remiax主题">https://iitii.github.io/2018/09/27/Ubuntu18.04配置flat-remiax主题/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://iitii.github.io/2018/09/27/Ubuntu18.04配置flat-remiax主题/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+      </div>
+
+      
+
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/14/WSL配置Clion以及VS code C++ 开发环境/" rel="prev" title="WSL配置Clion开发环境">
+                WSL配置Clion开发环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">IITII</p>
+              <p class="site-description motion-element" itemprop="description">山野之人，粗鄙之语</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:ccmejx@gmail.com" title="E-Mail &rarr; mailto:ccmejx@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/callmehelp" title="Telegram &rarr; https://t.me/callmehelp" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-校对BIOS时间"><span class="nav-number">1.</span> <span class="nav-text">1. 校对BIOS时间:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-以下操作翻墙体验更好-下载electron-ssr"><span class="nav-number">2.</span> <span class="nav-text">2. 以下操作翻墙体验更好, 下载electron-ssr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装chrome"><span class="nav-number">3.</span> <span class="nav-text">3. 安装chrome:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-卸载firefox以及其他无用的链接方式"><span class="nav-number">4.</span> <span class="nav-text">4. 卸载firefox以及其他无用的链接方式:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-安装git等："><span class="nav-number">5.</span> <span class="nav-text">5. 安装git等：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-安装gnome-tweak-tool："><span class="nav-number">6.</span> <span class="nav-text">6. 安装gnome-tweak-tool：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-打开软件商城-–-gt-附加组件-–-gt-安装："><span class="nav-number">7.</span> <span class="nav-text">7. 打开软件商城 –&gt; 附加组件 –&gt; 安装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-安装guake："><span class="nav-number">8.</span> <span class="nav-text">8. 安装guake：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-安装配置oh-my-zsh："><span class="nav-number">9.</span> <span class="nav-text">9. 安装配置oh-my-zsh：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-安装flat-remix主题："><span class="nav-number">10.</span> <span class="nav-text">10. 安装flat-remix主题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-微调：Ubuntu18-04锁屏后隐藏dask-to-dock："><span class="nav-number">11.</span> <span class="nav-text">11. 微调：Ubuntu18.04锁屏后隐藏dask to dock：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-更换ubuntu输入密码时的紫色界面"><span class="nav-number">12.</span> <span class="nav-text">12. 更换ubuntu输入密码时的紫色界面:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-安装spacevim："><span class="nav-number">13.</span> <span class="nav-text">13. 安装spacevim：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-安装Google-fcitx输入法"><span class="nav-number">14.</span> <span class="nav-text">14. 安装Google fcitx输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-For-Nvidia-desktop-User"><span class="nav-number">15.</span> <span class="nav-text">15. For Nvidia desktop User:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IITII</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">39k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:11</span>
+  
+</div>
+
+<!--关闭页面底部由Hexo强力驱动以及主题信息-->
+
+<!--
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+-->
+
+<!--添加网站运行时间-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/02/2019 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+<!--添加字数统计-->
+<!--
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.9k字</span>
+</div>
+-->
+<!--增加人数统计-->
+<!--
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="热度">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'tCvAKODmBJOBKzqSxRCarzPS-gzGzoHsz',
+    appKey: 'hNghRodSXtPu7oyhMmmAMxJl',
+    placeholder: '写点什么...',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+<!--Google SEO优化-->
+<meta name="google-site-verification" content="SrsInNUnd5avPjonJfK8DCpTb3EwdYd-eMaOhwiqHAM">
+<!--Bing SEO优化-->
+<meta name="msvalidate.01" content="F22D650D11D294DF8D3528450CFEF5B1">
+<!--添加顶部加载条-->
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<!--修改加载条颜色，默认为 粉色。。。-->
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+<meta name="theme-color" content="#222">
+
+<!--添加 F12 控制台声明信息-->
+<script>
+    (function  info() {
+        console.info("免责声明：\n" +
+            "\t1. 本博客只是分享技术的平台。\n" +
+            "\t2. 技术本身并没有错，错的是人。就如同刀一般，用的好，那是救人命的手术刀；用不好那就是屠刀。\n" +
+            "\t3. 博客内容若有敏感词汇，还请第一时间联系 ccmejx@gmail.com 并附上详细内容，我会在第一时间处理。\n" +
+            "\t附24字真言：\n" +
+            "\t\t富强、民主、文明、和谐\n" +
+            "\t\t自由、平等、公正、法治\n" +
+            "\t\t爱国、敬业、诚信、友善\n")
+    })();
+</script>
+
+<!--设置加密访问-->
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/96memo.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32memo.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16memo.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/memo.ico?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. 安装 在FFmpeg的下载页面下载需要的版本，目前有Linux、Windows、MacOS版本 &amp;amp; Source code 下载传送门： 官网：https://ffmpeg.org/download.html  Github: https://github.com/FFmpeg/FFmpeg      从源代码进行构建：123456789sudo apt install yasm#*">
+<meta name="keywords" content="FFmpeg,影视">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmpeg的简单使用">
+<meta property="og:url" content="https://iitii.github.io/2019/02/01/FFmpeg简单使用/index.html">
+<meta property="og:site_name" content="Hello Memo">
+<meta property="og:description" content="1. 安装 在FFmpeg的下载页面下载需要的版本，目前有Linux、Windows、MacOS版本 &amp;amp; Source code 下载传送门： 官网：https://ffmpeg.org/download.html  Github: https://github.com/FFmpeg/FFmpeg      从源代码进行构建：123456789sudo apt install yasm#*">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-30T11:41:42.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFmpeg的简单使用">
+<meta name="twitter:description" content="1. 安装 在FFmpeg的下载页面下载需要的版本，目前有Linux、Windows、MacOS版本 &amp;amp; Source code 下载传送门： 官网：https://ffmpeg.org/download.html  Github: https://github.com/FFmpeg/FFmpeg      从源代码进行构建：123456789sudo apt install yasm#*">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hello Memo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://iitii.github.io/2019/02/01/FFmpeg简单使用/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>FFmpeg的简单使用 | Hello Memo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!--爱心效果-->
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello Memo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-aria">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/Aria/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Aria</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iitii.github.io/2019/02/01/FFmpeg简单使用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IITII">
+      <meta itemprop="description" content="山野之人，粗鄙之语">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello Memo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">FFmpeg的简单使用
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-01 12:53:14" itemprop="dateCreated datePublished" datetime="2019-02-01T12:53:14+08:00">2019-02-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-30 19:41:42" itemprop="dateModified" datetime="2019-04-30T19:41:42+08:00">2019-04-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/02/01/FFmpeg简单使用/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/02/01/FFmpeg简单使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/02/01/FFmpeg简单使用/" class="leancloud_visitors" data-flag-title="FFmpeg的简单使用">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+                <span>℃</span>
+            </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><ul>
+<li>在FFmpeg的下载页面下载需要的版本，目前有Linux、Windows、MacOS版本 &amp; Source code</li>
+<li>下载传送门：<ul>
+<li>官网：<a href="https://ffmpeg.org/download.html" target="_blank" rel="noopener">https://ffmpeg.org/download.html</a> </li>
+<li>Github: <a href="https://github.com/FFmpeg/FFmpeg" target="_blank" rel="noopener">https://github.com/FFmpeg/FFmpeg</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>从源代码进行构建：<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install yasm</span><br><span class="line"><span class="comment">#***下载最新版release，假设下载后的release名称为：n4.0.1***</span></span><br><span class="line">name=n4.0.1</span><br><span class="line">tar -xvf <span class="variable">$name</span></span><br><span class="line"><span class="built_in">cd</span> ffmpeg</span><br><span class="line">./configure --<span class="built_in">enable</span>-x264</span><br><span class="line"><span class="comment">#如果有问题，直接 ./configure</span></span><br><span class="line">core=`cat /proc/cpuinfo| grep <span class="string">"processor"</span>| wc -l`</span><br><span class="line">sudo make -j <span class="variable">$core</span> &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<!--获取最新版 Github release 的一项可选的方法-->
+<!--
+wget --no-check-certificate -qO- https://api.github.com/repos/FFmpeg/FFmpeg/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g;s/v//g' | sed 's/tag_name: //g'
+-->
+<!--格式为：
+wget --no-check-certificate -qO- https://api.github.com/repos/$USER-NAME/$REPO-NAME/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g;s/v//g' | sed 's/tag_name: //g'
+-->
+<hr>
+<h3 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2. 介绍"></a>2. 介绍</h3><blockquote>
+<p>从源代码编译后，会安装 <em>ffmpeg</em>、<em>ffprobe</em>、<em>ffplay</em></p>
+<ul>
+<li><em>ffmpeg</em> 主要用于转码</li>
+<li><em>ffprobe</em> 主要用于查看媒体文件信息</li>
+</ul>
+</blockquote>
+<ul>
+<li><em>ffplay</em> 不仅仅是播放器，同时也是测试 <em>ffmpeg</em> 的 <em>codec</em> 引擎、<em>format</em> 引擎、<em>filter</em> 引擎的工具，并且还可以进行可视化的媒体参数分析</li>
+</ul>
+<hr>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h3><h4 id="1-初级部分"><a href="#1-初级部分" class="headerlink" title="1. 初级部分"></a>1. 初级部分</h4><h5 id="1-音视频文件转-MP4-ffmpeg-i-input-flv-c-copy-f-mp4-output-mp4"><a href="#1-音视频文件转-MP4-ffmpeg-i-input-flv-c-copy-f-mp4-output-mp4" class="headerlink" title="1. 音视频文件转 MP4: ffmpeg -i input.flv -c copy -f mp4 output.mp4"></a>1. 音视频文件转 MP4: <code>ffmpeg -i input.flv -c copy -f mp4 output.mp4</code></h5><h5 id="2-音视频文件转-FLV-ffmpeg-i-input-mp4-c-copy-f-flv-output-flv"><a href="#2-音视频文件转-FLV-ffmpeg-i-input-mp4-c-copy-f-flv-output-flv" class="headerlink" title="2. 音视频文件转 FLV: ffmpeg -i input.mp4 -c copy -f flv output.flv"></a>2. 音视频文件转 FLV: <code>ffmpeg -i input.mp4 -c copy -f flv output.flv</code></h5><blockquote>
+<p>若音频有问题或者封装出错，尝试：<code>ffmpeg -i input.mp4 -vcodec copy -acodec aac -f flv output.flv</code></p>
+</blockquote>
+<h5 id="3-提取音视频文件里面的AAC音频流-ffmpeg-i-input-mp4-vn-acodec-copy-output-aac"><a href="#3-提取音视频文件里面的AAC音频流-ffmpeg-i-input-mp4-vn-acodec-copy-output-aac" class="headerlink" title="3. 提取音视频文件里面的AAC音频流: ffmpeg  -i input.mp4 -vn -acodec copy output.aac"></a>3. 提取音视频文件里面的<strong>AAC</strong>音频流: <code>ffmpeg  -i input.mp4 -vn -acodec copy output.aac</code></h5><h5 id="4-FFmpeg-输出MP3-ffmpeg-i-INPUT-acodec-libmp3lame-b-a-320k-output-mp3"><a href="#4-FFmpeg-输出MP3-ffmpeg-i-INPUT-acodec-libmp3lame-b-a-320k-output-mp3" class="headerlink" title="4. FFmpeg 输出MP3: ffmpeg -i INPUT -acodec libmp3lame -b:a 320k output.mp3"></a>4. FFmpeg 输出<strong>MP3</strong>: <code>ffmpeg -i INPUT -acodec libmp3lame -b:a 320k output.mp3</code></h5><h5 id="5-提取音视频文件里面的H-264视频流-ffmpeg-i-output-mp4-an-vcodec-copy-bsf-v-h264-mp4toannexb-output-h264"><a href="#5-提取音视频文件里面的H-264视频流-ffmpeg-i-output-mp4-an-vcodec-copy-bsf-v-h264-mp4toannexb-output-h264" class="headerlink" title="5. 提取音视频文件里面的H.264视频流: ffmpeg -i output.mp4 -an -vcodec copy -bsf:v h264_mp4toannexb output.h264"></a>5. 提取音视频文件里面的<strong>H.264</strong>视频流: <code>ffmpeg -i output.mp4 -an -vcodec copy -bsf:v h264_mp4toannexb output.h264</code></h5><h5 id="6-使用AAC和H-264文件生成mp4文件-ffmpeg-i-input-aac-i-input-h264-acodec-copy-bsf-a-aac-adtstoasc-vcodec-copy-f-mp4-output-mp4"><a href="#6-使用AAC和H-264文件生成mp4文件-ffmpeg-i-input-aac-i-input-h264-acodec-copy-bsf-a-aac-adtstoasc-vcodec-copy-f-mp4-output-mp4" class="headerlink" title="6. 使用AAC和H.264文件生成mp4文件: ffmpeg -i input.aac -i input.h264 -acodec copy -bsf:a aac_adtstoasc -vcodec copy -f mp4 output.mp4"></a>6. 使用<strong>AAC</strong>和<strong>H.264</strong>文件生成<strong>mp4</strong>文件: <code>ffmpeg -i input.aac -i input.h264 -acodec copy -bsf:a aac_adtstoasc -vcodec copy -f mp4 output.mp4</code></h5><h5 id="7-对音频文件的编码做转换-ffmpeg-i-input-wav-acodec-libfdk-aac-output-aac"><a href="#7-对音频文件的编码做转换-ffmpeg-i-input-wav-acodec-libfdk-aac-output-aac" class="headerlink" title="7. 对音频文件的编码做转换: ffmpeg -i input.wav -acodec libfdk_aac output.aac"></a>7. 对音频文件的编码做转换: <code>ffmpeg -i input.wav -acodec libfdk_aac output.aac</code></h5><h5 id="8-添加srt格式的字幕-ffmpeg-i-video-avi-vf-subtitles-subtitle-srt-out-avi"><a href="#8-添加srt格式的字幕-ffmpeg-i-video-avi-vf-subtitles-subtitle-srt-out-avi" class="headerlink" title="8. 添加srt格式的字幕: ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi"></a>8. 添加srt格式的字幕: <code>ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi</code></h5><h5 id="9-从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg-i-video-mkv-vf-subtitles-video-mkv-out-avi"><a href="#9-从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg-i-video-mkv-vf-subtitles-video-mkv-out-avi" class="headerlink" title="9. 从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg -i video.mkv -vf subtitles=video.mkv out.avi"></a>9. 从现有视频文件中抽离字幕并且烧录进新的视频中：<code>ffmpeg -i video.mkv -vf subtitles=video.mkv out.avi</code></h5><h5 id="10-添加ass格式的字幕：ffmpeg-i-video-avi-vf-quot-ass-subtitle-ass-quot-out-avi-或者你可以先将srt转换成ass格式：ffmpeg-i-subtitle-srt-subtitle-ass"><a href="#10-添加ass格式的字幕：ffmpeg-i-video-avi-vf-quot-ass-subtitle-ass-quot-out-avi-或者你可以先将srt转换成ass格式：ffmpeg-i-subtitle-srt-subtitle-ass" class="headerlink" title="10. 添加ass格式的字幕：ffmpeg -i video.avi -vf &quot;ass=subtitle.ass&quot; out.avi 或者你可以先将srt转换成ass格式：ffmpeg -i subtitle.srt subtitle.ass"></a>10. 添加ass格式的字幕：<code>ffmpeg -i video.avi -vf &quot;ass=subtitle.ass&quot; out.avi</code> 或者你可以先将srt转换成ass格式：<code>ffmpeg -i subtitle.srt subtitle.ass</code></h5><h5 id="11-添加idx-sub格式的字幕：-ffmpeg-i-1-mp4-i-1-sub-i-1-idx-filter-complex-quot-0-v-2-s-overlay-0-H-h-quot-c-v-libx264-out-mp4"><a href="#11-添加idx-sub格式的字幕：-ffmpeg-i-1-mp4-i-1-sub-i-1-idx-filter-complex-quot-0-v-2-s-overlay-0-H-h-quot-c-v-libx264-out-mp4" class="headerlink" title="11. 添加idx/sub格式的字幕： ffmpeg -i 1.mp4 -i 1.sub -i 1.idx -filter_complex &quot;[0:v][2:s]overlay=0:H-h&quot; -c:v libx264 out.mp4"></a>11. 添加idx/sub格式的字幕： <code>ffmpeg -i 1.mp4 -i 1.sub -i 1.idx -filter_complex &quot;[0:v][2:s]overlay=0:H-h&quot; -c:v libx264 out.mp4</code></h5><blockquote>
+<p>这个会将图片类型的sub/idx格式字幕烧录进视频文件中。</p>
+</blockquote>
+<h4 id="2-高级部分"><a href="#2-高级部分" class="headerlink" title="2. 高级部分"></a>2. 高级部分</h4><hr>
+<blockquote>
+<p>Advance: FFmpeg 流媒体<br>-re: 实时推送</p>
+</blockquote>
+<hr>
+<h5 id="8-录制-amp-发布-RTMP-流"><a href="#8-录制-amp-发布-RTMP-流" class="headerlink" title="8. 录制 &amp; 发布 RTMP 流"></a>8. 录制 &amp; 发布 <strong>RTMP</strong> 流</h5><ol>
+<li>发布RTMP流: <code>ffmpeg -i input.mp4 -c copy -f flv rtmp://localhost/live/class</code>  <blockquote>
+<p>live 为发布点，class 为流名称<br>自定义发布点为 live1、流名称为 class1，并且实时推流<br><code>ffmpeg -re -i input.mp4 -c copy -f flv -rtmp_app live1 -rtmp_playpath class1 rtmp://localhost</code></p>
+<ol>
+<li>录制RTMP流: <code>ffmpeg -i rtmp://localhost/live/class -c copy -f flv output.flv</code> </li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h5 id="9-录制-HTTP-流"><a href="#9-录制-HTTP-流" class="headerlink" title="9.  录制 HTTP 流"></a>9.  录制 <strong>HTTP</strong> 流</h5><ol>
+<li><p>FLV直播流: <code>ffmpeg -i http://localhost/live.flv -c copy -f flv output.flv</code></p>
+</li>
+<li><p>TS直播流: <code>ffmpeg -i http://localhost/live.ts -c copy -f flv output.flv</code></p>
+</li>
+<li>HLS直播流: <code>ffmpeg -i http://localhost/live.m3u8 -c copy -f flv output.flv</code></li>
+<li>设置 <em>http headers</em> &amp; <em>user_agent</em> &amp; <em>seekable</em> 等参数 : <code>ffmpeg -ss 300 -seekable 1 -user_agent &quot;CC&#39;s Player&quot; -headers &quot;referer: http://localhost/index.html&quot; -i http://localhost/live/class.flv -c copy -f flv -y ouput.flv</code>  </li>
+</ol>
+<h5 id="10-录制-amp-发布-TCP-UDP-流"><a href="#10-录制-amp-发布-TCP-UDP-流" class="headerlink" title="10. 录制 &amp; 发布 TCP/UDP 流"></a>10. 录制 &amp; 发布 <strong>TCP/UDP</strong> 流</h5><ol>
+<li>发布TCP流: <code>ffmpeg -re -i input.mp4 -c copy -f flv tcp://127.0.0.1:123/live/stream</code><blockquote>
+<p>设置缓冲区为 4096 bit：<code>ffmpeg -re -i input.mp4 -c copy -send_buffer_size 4096 -f flv tcp://127.0.0.1:123/live/stream</code></p>
+</blockquote>
+</li>
+<li>录制TCP流: <code>ffmpeg -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv</code><blockquote>
+<p>设置监听端口超时 listen_timeout (5秒): <code>ffmpeg -listen_timeout 5000 -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv</code><br>设置TCP流拉取超时参数 timeout （200秒）：<code>ffmpeg -timeout 20000000 -listen 1 -f flv -i tcp://127.0.0.1/live/stream -c copy -f flv output.flv</code></p>
+</blockquote>
+</li>
+<li><p>发布UDP流：<code>ffmpeg -re -i input.mp4 -c copy -localport 23456 -f flv udp://127.0.0.1:123/live/stream</code></p>
+<blockquote>
+<p>使用FFmpeg的UDP传输数据时，默认会由系统分配本地端口，使用localport可以设置监听本地端口，抓包可以看到有一个 23456 -&gt; 123 的端口转发</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Advance: FFmpeg 桌面录制</p>
+</blockquote>
+<hr>
+</li>
+</ol>
+<h5 id="11-Windows桌面-录制"><a href="#11-Windows桌面-录制" class="headerlink" title="11. Windows桌面 录制"></a>11. Windows桌面 录制</h5><table>
+<thead>
+<tr>
+<th style="text-align:right">参数</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">draw_mouse</td>
+<td style="text-align:right">是否采集鼠标指针</td>
+</tr>
+<tr>
+<td style="text-align:right">show_region</td>
+<td style="text-align:right">是否绘制采集边界</td>
+</tr>
+<tr>
+<td style="text-align:right">framerate</td>
+<td style="text-align:right">设置视频帧率，默认25帧，两个标准值为pal、ntsc</td>
+</tr>
+<tr>
+<td style="text-align:right">video_size</td>
+<td style="text-align:right">设置视频分辨率</td>
+</tr>
+<tr>
+<td style="text-align:right">offset_x</td>
+<td style="text-align:right">采集区域偏移x个像素</td>
+</tr>
+<tr>
+<td style="text-align:right">offset_y</td>
+<td style="text-align:right">采集区域偏移x个像素</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>整个桌面(设定帧率为60)：<code>./ffmpeg.exe -f gdigrab -framerate 60 -i desktop output.mp4</code></p>
+</li>
+<li><p>某个窗口（假设窗口名为ffmpeg）：<code>./ffmpeg.exe -f gdigrab -framerate 60 -i title=ffmpeg output.mp4</code></p>
+</li>
+<li><p>录制带偏移量的视频：<code>./ffmpeg.exe -f gdigrab -framerate 60 -offset_x 50 -offset_y 50 -video_size 400x400 -i title=ffmpeg output.mp4</code>  </p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FFmpeg/" rel="tag"># FFmpeg</a>
+          
+            <a href="/tags/影视/" rel="tag"># 影视</a>
+          
+        </div>
+      
+
+      <!--添加版权信息-->
+      <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/02/01/FFmpeg简单使用/">FFmpeg的简单使用</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 IITII 的个人博客">IITII</a></p>
+  <p><span>发布时间:</span>2019年02月01日 - 12:02</p>
+  <p><span>最后更新:</span>2019年04月30日 - 19:04</p>
+  <p><span>原始链接:</span><a href="/2019/02/01/FFmpeg简单使用/" title="FFmpeg的简单使用">https://iitii.github.io/2019/02/01/FFmpeg简单使用/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://iitii.github.io/2019/02/01/FFmpeg简单使用/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+      </div>
+
+      
+
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/30/SSH_config/" rel="next" title="SSH Config">
+                <i class="fa fa-chevron-left"></i> SSH Config
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/04/1/" rel="prev" title="关于本博客的搭建">
+                关于本博客的搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">IITII</p>
+              <p class="site-description motion-element" itemprop="description">山野之人，粗鄙之语</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:ccmejx@gmail.com" title="E-Mail &rarr; mailto:ccmejx@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/callmehelp" title="Telegram &rarr; https://t.me/callmehelp" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1. 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-介绍"><span class="nav-number">2.</span> <span class="nav-text">2. 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初级部分"><span class="nav-number">3.1.</span> <span class="nav-text">1. 初级部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-音视频文件转-MP4-ffmpeg-i-input-flv-c-copy-f-mp4-output-mp4"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 音视频文件转 MP4: ffmpeg -i input.flv -c copy -f mp4 output.mp4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-音视频文件转-FLV-ffmpeg-i-input-mp4-c-copy-f-flv-output-flv"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 音视频文件转 FLV: ffmpeg -i input.mp4 -c copy -f flv output.flv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-提取音视频文件里面的AAC音频流-ffmpeg-i-input-mp4-vn-acodec-copy-output-aac"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 提取音视频文件里面的AAC音频流: ffmpeg  -i input.mp4 -vn -acodec copy output.aac</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-FFmpeg-输出MP3-ffmpeg-i-INPUT-acodec-libmp3lame-b-a-320k-output-mp3"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. FFmpeg 输出MP3: ffmpeg -i INPUT -acodec libmp3lame -b:a 320k output.mp3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-提取音视频文件里面的H-264视频流-ffmpeg-i-output-mp4-an-vcodec-copy-bsf-v-h264-mp4toannexb-output-h264"><span class="nav-number">3.1.5.</span> <span class="nav-text">5. 提取音视频文件里面的H.264视频流: ffmpeg -i output.mp4 -an -vcodec copy -bsf:v h264_mp4toannexb output.h264</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-使用AAC和H-264文件生成mp4文件-ffmpeg-i-input-aac-i-input-h264-acodec-copy-bsf-a-aac-adtstoasc-vcodec-copy-f-mp4-output-mp4"><span class="nav-number">3.1.6.</span> <span class="nav-text">6. 使用AAC和H.264文件生成mp4文件: ffmpeg -i input.aac -i input.h264 -acodec copy -bsf:a aac_adtstoasc -vcodec copy -f mp4 output.mp4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-对音频文件的编码做转换-ffmpeg-i-input-wav-acodec-libfdk-aac-output-aac"><span class="nav-number">3.1.7.</span> <span class="nav-text">7. 对音频文件的编码做转换: ffmpeg -i input.wav -acodec libfdk_aac output.aac</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-添加srt格式的字幕-ffmpeg-i-video-avi-vf-subtitles-subtitle-srt-out-avi"><span class="nav-number">3.1.8.</span> <span class="nav-text">8. 添加srt格式的字幕: ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg-i-video-mkv-vf-subtitles-video-mkv-out-avi"><span class="nav-number">3.1.9.</span> <span class="nav-text">9. 从现有视频文件中抽离字幕并且烧录进新的视频中：ffmpeg -i video.mkv -vf subtitles=video.mkv out.avi</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-添加ass格式的字幕：ffmpeg-i-video-avi-vf-quot-ass-subtitle-ass-quot-out-avi-或者你可以先将srt转换成ass格式：ffmpeg-i-subtitle-srt-subtitle-ass"><span class="nav-number">3.1.10.</span> <span class="nav-text">10. 添加ass格式的字幕：ffmpeg -i video.avi -vf &quot;ass=subtitle.ass&quot; out.avi 或者你可以先将srt转换成ass格式：ffmpeg -i subtitle.srt subtitle.ass</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-添加idx-sub格式的字幕：-ffmpeg-i-1-mp4-i-1-sub-i-1-idx-filter-complex-quot-0-v-2-s-overlay-0-H-h-quot-c-v-libx264-out-mp4"><span class="nav-number">3.1.11.</span> <span class="nav-text">11. 添加idx/sub格式的字幕： ffmpeg -i 1.mp4 -i 1.sub -i 1.idx -filter_complex &quot;[0:v][2:s]overlay=0:H-h&quot; -c:v libx264 out.mp4</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高级部分"><span class="nav-number">3.2.</span> <span class="nav-text">2. 高级部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-录制-amp-发布-RTMP-流"><span class="nav-number">3.2.1.</span> <span class="nav-text">8. 录制 &amp; 发布 RTMP 流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-录制-HTTP-流"><span class="nav-number">3.2.2.</span> <span class="nav-text">9.  录制 HTTP 流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-录制-amp-发布-TCP-UDP-流"><span class="nav-number">3.2.3.</span> <span class="nav-text">10. 录制 &amp; 发布 TCP/UDP 流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-Windows桌面-录制"><span class="nav-number">3.2.4.</span> <span class="nav-text">11. Windows桌面 录制</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IITII</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">39k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:11</span>
+  
+</div>
+
+<!--关闭页面底部由Hexo强力驱动以及主题信息-->
+
+<!--
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+-->
+
+<!--添加网站运行时间-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/02/2019 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+<!--添加字数统计-->
+<!--
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.9k字</span>
+</div>
+-->
+<!--增加人数统计-->
+<!--
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="热度">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'tCvAKODmBJOBKzqSxRCarzPS-gzGzoHsz',
+    appKey: 'hNghRodSXtPu7oyhMmmAMxJl',
+    placeholder: '写点什么...',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
