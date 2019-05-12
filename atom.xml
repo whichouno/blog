@@ -386,11 +386,11 @@
     
       <category term="VPN" scheme="https://iitii.github.io/tags/VPN/"/>
     
+      <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
+    
       <category term="proxy" scheme="https://iitii.github.io/tags/proxy/"/>
     
       <category term="Ubuntu18.04" scheme="https://iitii.github.io/tags/Ubuntu18-04/"/>
-    
-      <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -545,9 +545,9 @@
     
       <category term="Windows" scheme="https://iitii.github.io/tags/Windows/"/>
     
-      <category term="proxy" scheme="https://iitii.github.io/tags/proxy/"/>
-    
       <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
+    
+      <category term="proxy" scheme="https://iitii.github.io/tags/proxy/"/>
     
   </entry>
   
