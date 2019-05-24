@@ -148,8 +148,8 @@
         <category>Windows</category>
       </categories>
       <tags>
-        <tag>VPN</tag>
         <tag>config</tag>
+        <tag>VPN</tag>
       </tags>
   </entry>
   <entry>
@@ -175,8 +175,8 @@
         <category>VPN</category>
       </categories>
       <tags>
-        <tag>VPN</tag>
         <tag>config</tag>
+        <tag>VPN</tag>
         <tag>Linux</tag>
         <tag>proxy</tag>
         <tag>Ubuntu18.04</tag>
@@ -243,8 +243,8 @@
         <category>proxy</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>Windows</tag>
+        <tag>Linux</tag>
         <tag>proxy</tag>
       </tags>
   </entry>
@@ -270,8 +270,8 @@
         <category>space</category>
       </categories>
       <tags>
-        <tag>VPS</tag>
         <tag>config</tag>
+        <tag>VPS</tag>
         <tag>space</tag>
       </tags>
   </entry>
@@ -283,8 +283,8 @@
         <category>开发环境</category>
       </categories>
       <tags>
-        <tag>Clion</tag>
         <tag>ssh</tag>
+        <tag>Clion</tag>
         <tag>WSL</tag>
       </tags>
   </entry>
