@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iitii.github.io/"/>
-  <updated>2019-05-23T12:08:46.880Z</updated>
+  <updated>2019-05-24T14:55:40.751Z</updated>
   <id>https://iitii.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://iitii.github.io/2019/05/23/1/"/>
     <id>https://iitii.github.io/2019/05/23/1/</id>
     <published>2019-05-22T16:15:57.000Z</published>
-    <updated>2019-05-23T12:08:46.880Z</updated>
+    <updated>2019-05-24T14:55:40.751Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><div class="note danger">            <p>不, 这里没有内容… </p>          </div><!--什么jb玩意，(抠鼻)真™难用--><h3 id="将-TAPD-与-Github-关联起来"><a href="#将-TAPD-与-Github-关联起来" class="headerlink" title="将 TAPD 与 Github 关联起来"></a>将 <em>TAPD</em> 与 <em>Github</em> 关联起来</h3><blockquote><p>ps: Secret Token 不是必须项，可以不生成。如果要用的话，就填到 <strong>Payload URL</strong> 下面的 <strong>Secret</strong> 里面去  </p><ol><li>在GitHub上新建一个项目</li><li>点击仓库的设置</li><li>点击 <strong>Webhooks</strong> </li><li>点击 <strong>Add Webhook</strong></li></ol></blockquote><p><img src="/images/git/1.png" alt="Loading"></p><ol start="5"><li>进入<strong>TAPD</strong> 项目详情页</li><li>点击设置</li><li>点击应用设置</li><li>点击Github源码（进去后可能会有个弹窗，关掉别管就行了）</li><li>点击复制URL</li><li>打开GitHub添加Webhook的那个页面，把URL复制到 <strong>PayLoad URL</strong> 里面去</li><li>点击下面的 <strong>Send me everything</strong></li><li>点击<strong>Add webhook</strong><br><img src="/images/git/2.png" alt="Loading"><br><img src="/images/git/3.png" alt="Loading"><br><img src="/images/git/4.png" alt="Loading"><br><img src="/images/git/5.png" alt="Loading">  </li></ol><h3 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h3><h4 id="标准提交格式"><a href="#标准提交格式" class="headerlink" title="标准提交格式"></a>标准提交格式</h4><ul><li>需求、缺陷、任务对应关键字：</li></ul><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需求： --story=[story id] --user=[usernick] 描述  </span><br><span class="line">缺陷： --bug=[bug id] --user=[usernick] 描述  </span><br><span class="line">任务： --task=[task id] --user=[usernick] 描述</span><br></pre></td></tr></table></figure></div><h4 id="已尝试的提交格式（除标准）"><a href="#已尝试的提交格式（除标准）" class="headerlink" title="已尝试的提交格式（除标准）"></a>已尝试的提交格式（除标准）</h4><blockquote><p>TAPD 显示关联提交那里显示的提交用户名和 <strong>–user</strong> 指定的用户名没有必然关系.<br>这个显示的用户名只会和本地<em>git</em>设定的用户名一样<br>如果本地<em>git</em>没有指定用户名的话，就会显示为GitHub的用户名<br>没有详情的提交会被 <em>TAPD</em> 视为 <strong>无效提交</strong>，<strong>不会</strong>被同步到<em>git</em>关联提交<br>Git关联提交人数显示有问题，除了<strong>0</strong>就是<strong>1</strong>。也许这是一个<strong>bool</strong> 类型的值。（；´д｀）ゞ<br><img src="/images/git/6.png" alt="Loading"><br><img src="/images/git/7.png" alt="Loading">  </p><ol><li><code>--user=userName 提交说明</code> 提交有效，但是不会被关联到 TAPD</li><li><code>--story=1002534 --story=1002532 --user=Gayhub 测试关联提交</code> 提交有效，而且会被<strong>TAPD</strong>视为两次提交,完成了两个需求（GitHub还是将这个视为一次提交）</li><li><del><code>--story=1002534 --story=1002532</code></del></li><li><del><code>--user=Gayhub --story=1002534 --story=1002532  测试关联提交</code></del></li><li>如果还有 <strong>其他可能的方案</strong> 或者 <strong>测试结果</strong> 欢迎留言</li></ol></blockquote><!--捞逼玩意(抠鼻-->]]></content>
+    <content type="html"><![CDATA[<h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><div class="note danger">            <p>不, 这里没有内容… </p>          </div><!--什么jb玩意，(抠鼻)真™难用-->### 然后<div class="note success">            <p>我们需要的什么？是从摇篮到坟墓的全套服务 </p>          </div><h3 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h3><ul><li>这里有现成的轮子，就不再复述了。<br><a href="https://www.jianshu.com/p/0c0d8d10a1cb" target="_blank" rel="noopener">注册Github详细教程</a><h3 id="创建GitHub仓库"><a href="#创建GitHub仓库" class="headerlink" title="创建GitHub仓库"></a>创建GitHub仓库</h3></li><li>同上<br><a href="https://wiki.jikexueyuan.com/project/github-basics/creat-new-repo.html" target="_blank" rel="noopener">在 GitHub 上创建一个新仓库</a></li></ul><h3 id="将-TAPD-与-Github仓库-关联起来"><a href="#将-TAPD-与-Github仓库-关联起来" class="headerlink" title="将 TAPD 与 Github仓库 关联起来"></a>将 <em>TAPD</em> 与 <em>Github仓库</em> 关联起来</h3><blockquote><p>ps: Secret Token 不是必须项，可以不生成。如果要用的话，就填到 <strong>Payload URL</strong> 下面的 <strong>Secret</strong> 里面去<br>所谓的网络钩子，只是一个关联，相当于一个快捷方式。它并不会把文件什么的拉取到 <em>TAPD</em> 上，它只会告诉你有提交记录（相当于通知信息）。<br>可以把<em>TAPD</em>看成一个<strong>布告栏</strong>。当你看到有你感兴趣的信息时，你肯定不会向布告栏询问更具体的细节 <strong>而是</strong> 向发布公告的人(<em>Github</em>)询问更具体的细节。  </p></blockquote><ol><li>在GitHub上新建一个项目</li><li>点击仓库的设置</li><li>点击 <strong>Webhooks</strong> </li><li>点击 <strong>Add Webhook</strong></li></ol><p><img src="/images/git/1.png" alt="Loading"></p><ol start="5"><li>进入<strong>TAPD</strong> 项目详情页</li><li>点击设置</li><li>点击应用设置</li><li>点击Github源码（进去后可能会有个弹窗，关掉别管就行了）</li><li>点击复制URL</li><li>打开GitHub添加Webhook的那个页面，把URL复制到 <strong>PayLoad URL</strong> 里面去</li><li>点击下面的 <strong>Send me everything</strong></li><li>点击<strong>Add webhook</strong><br><img src="/images/git/2.png" alt="Loading"><br><img src="/images/git/3.png" alt="Loading"><br><img src="/images/git/4.png" alt="Loading"><br><img src="/images/git/5.png" alt="Loading">  </li></ol><h3 id="开始第一个提交"><a href="#开始第一个提交" class="headerlink" title="开始第一个提交"></a>开始第一个提交</h3><blockquote><p>提供3种提交方式：  </p><ol><li>网页提交  </li><li>使用 <em>Github Desktop</em> 进行提交</li><li>纯命令行操作<br>新手推荐第一种，也就是下面介绍的这种提交方式  </li></ol><ul><li>大体操作可以参考这个：<a href="http://wiki.jikexueyuan.com/project/github-basics/commit-first-change.html" target="_blank" rel="noopener">提交你的第一个更改</a>  </li><li><strong>注意</strong> ：在提交更改的时候，<strong><em>commit信息</em></strong> 必须符合接下来的提交格式，要不然 <strong>TAPD</strong> 没有关联提交记录</li></ul></blockquote><h3 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h3><h4 id="标准提交格式"><a href="#标准提交格式" class="headerlink" title="标准提交格式"></a>标准提交格式</h4><ul><li>需求、缺陷、任务对应关键字：</li></ul><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需求： --story=[story id] --user=[usernick] 描述  </span><br><span class="line">缺陷： --bug=[bug id] --user=[usernick] 描述  </span><br><span class="line">任务： --task=[task id] --user=[usernick] 描述</span><br></pre></td></tr></table></figure></div><h4 id="已尝试的提交格式（除标准）"><a href="#已尝试的提交格式（除标准）" class="headerlink" title="已尝试的提交格式（除标准）"></a>已尝试的提交格式（除标准）</h4><blockquote><ol><li>TAPD 显示关联提交那里显示的提交用户名和 <strong>–user</strong> 指定的用户名没有必然关系.  </li><li>这个显示的用户名只会和本地<em>git</em>设定的用户名一样   </li><li>如果本地<em>git</em>没有指定用户名的话，就会显示为GitHub的用户名   </li><li>没有详情的提交会被 <em>TAPD</em> 视为 <strong>无效提交</strong>，<strong>不会</strong>被同步到<em>git</em>关联提交   </li><li>Git关联提交人数显示有问题，除了<strong>0</strong>就是<strong>1</strong>。也许这是一个<strong>bool</strong> 类型的值。（；´д｀）ゞ<br>划掉的为未进行测试提交的示例。<br><img src="/images/git/6.png" alt="Loading"><br><img src="/images/git/7.png" alt="Loading">  </li><li><code>--user=userName 提交说明</code> 提交有效，但是不会被关联到 TAPD</li><li><code>--story=1002534 --story=1002532 --user=Gayhub 测试关联提交</code> 提交有效，而且会被<strong>TAPD</strong>视为两次提交,完成了两个需求（GitHub还是将这个视为一次提交）</li><li><del><code>--story=1002534 --story=1002532</code></del></li><li><del><code>--user=Gayhub --story=1002534 --story=1002532  测试关联提交</code></del></li><li>如果还有 <strong>其他可能的方案</strong> 或者 <strong>测试结果</strong> 欢迎留言</li></ol></blockquote><!--捞逼玩意(抠鼻-->]]></content>
     
     <summary type="html">
     
@@ -343,9 +343,9 @@
       <category term="Windows" scheme="https://iitii.github.io/categories/Windows/"/>
     
     
-      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
-    
       <category term="VPN" scheme="https://iitii.github.io/tags/VPN/"/>
+    
+      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
     
   </entry>
   
@@ -406,9 +406,9 @@
       <category term="VPN" scheme="https://iitii.github.io/categories/Linux/Ubuntu18-04/VPN/"/>
     
     
-      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
-    
       <category term="VPN" scheme="https://iitii.github.io/tags/VPN/"/>
+    
+      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
     
       <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
     
@@ -567,9 +567,9 @@
       <category term="proxy" scheme="https://iitii.github.io/categories/Linux/Windows/proxy/"/>
     
     
-      <category term="Windows" scheme="https://iitii.github.io/tags/Windows/"/>
-    
       <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
+    
+      <category term="Windows" scheme="https://iitii.github.io/tags/Windows/"/>
     
       <category term="proxy" scheme="https://iitii.github.io/tags/proxy/"/>
     
