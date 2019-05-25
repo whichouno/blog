@@ -163,7 +163,7 @@
 <meta property="og:image" content="https://iitii.github.io/images/git/6.png">
 <meta property="og:image" content="https://iitii.github.io/images/git/7.png">
 <meta property="og:image" content="https://iitii.github.io/images/git/8.png">
-<meta property="og:updated_time" content="2019-05-24T16:39:48.859Z">
+<meta property="og:updated_time" content="2019-05-25T05:27:29.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TAPD git关联提交">
 <meta name="twitter:description" content="TAPD 关于git关联提交的全套服务 (假 笑">
@@ -514,7 +514,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-25 00:39:48" itemprop="dateModified" datetime="2019-05-25T00:39:48+08:00">2019-05-25</time>
+                <time title="修改时间：2019-05-25 13:27:29" itemprop="dateModified" datetime="2019-05-25T13:27:29+08:00">2019-05-25</time>
               
             
           </span>
@@ -584,7 +584,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.7k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -623,9 +623,9 @@
         <hr>
 <p><em>Update at Fri May 24 23:34:46 CST 2019</em></p>
 <ul>
-<li>提交人数的显示 bug，已经修好了。</li>
+<li><hr>
+</li>
 </ul>
-<hr>
 <h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><div class="note danger">
             <p>不, 这里没有内容… </p>
           </div>  
@@ -676,17 +676,16 @@
 <h3 id="提交格式"><a href="#提交格式" class="headerlink" title="提交格式"></a>提交格式</h3><h4 id="标准提交格式"><a href="#标准提交格式" class="headerlink" title="标准提交格式"></a>标准提交格式</h4><ul>
 <li>需求、缺陷、任务对应关键字：</li>
 </ul>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需求： --story=[story id] --user=[usernick] 描述  </span><br><span class="line">缺陷： --bug=[bug id] --user=[usernick] 描述  </span><br><span class="line">任务： --task=[task id] --user=[usernick] 描述</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># usernick 为 TAPD 的用户名</span><br><span class="line">需求： --story=[story id] --user=[usernick] 描述  </span><br><span class="line">缺陷： --bug=[bug id] --user=[usernick] 描述  </span><br><span class="line">任务： --task=[task id] --user=[usernick] 描述</span><br></pre></td></tr></table></figure></div>
 <h4 id="已尝试的提交格式（除标准）"><a href="#已尝试的提交格式（除标准）" class="headerlink" title="已尝试的提交格式（除标准）"></a>已尝试的提交格式（除标准）</h4><blockquote>
 <ol>
-<li>TAPD 显示关联提交那里显示的提交用户名和 <strong>–user</strong> 指定的用户名没有必然关系.  </li>
-<li>这个显示的用户名只会和本地<em>git</em>设定的用户名一样   </li>
-<li>如果本地<em>git</em>没有指定用户名的话，就会显示为GitHub的用户名   </li>
-<li>没有详情的提交会被 <em>TAPD</em> 视为 <strong>无效提交</strong>，<strong>不会</strong>被同步到<em>git</em>关联提交   </li>
-<li><del>Git关联提交人数显示有问题，除了<strong>0</strong>就是<strong>1</strong>。也许这是一个<strong>bool</strong> 类型的值。（；´д｀）ゞ</del>   </li>
+<li>提交的时候，指定的 <strong>–user</strong> 用户名必须和 <strong>TAPD</strong> 里面的用户名相同。如果不是那就关联不到指定的用户.   </li>
+<li>Windows默认字符集为 <strong>GBK</strong>，所以直接用命令行提交会乱码，结果可能不会关联到指定用户。推荐使用 <strong>Github Desktop</strong> 或者 网页提交的方式。  </li>
+<li>如果没有关联到指定用户，但是同步到了 <strong>TAPD</strong> 的关联提交，就会显示 “Github助手关联了 ${github.username} 提交的源码”    </li>
+<li>没有详情的提交会被 <em>TAPD</em> 视为 <strong>无效提交</strong>，<strong>不会</strong>被同步到<em>git</em>关联提交     </li>
 <li>在关联提交之后，需求的类型不会改变。换句话说，就是不会从 “规划中” 自动变成 “已完成”，这个要自己改。<br>划掉的为未进行测试提交的示例。<br><img src="/images/git/6.png" alt="Loading"><br><img src="/images/git/7.png" alt="Loading">  </li>
 <li><code>--user=userName 提交说明</code> 提交有效，但是不会被关联到 TAPD</li>
-<li><code>--story=1002534 --story=1002532 --user=Gayhub 测试关联提交</code> 提交有效，而且会被<strong>TAPD</strong>视为两次提交,完成了两个需求（GitHub还是将这个视为一次提交）</li>
+<li><code>--story=1002534 --story=1002532 --user=Gayhub 测试关联提交</code> 提交有效，而且会被<strong>TAPD</strong>视为两次提交,完成了两个需求,显示为GitHub关联的提交（GitHub还是将这个视为一次提交）</li>
 <li><del><code>--story=1002534 --story=1002532</code></del></li>
 <li><del><code>--user=Gayhub --story=1002534 --story=1002532  测试关联提交</code></del></li>
 <li>如果还有 <strong>其他可能的方案</strong> 或者 <strong>测试结果</strong> 欢迎留言</li>
@@ -748,7 +747,7 @@
   <p><span>本文标题:</span><a href="/2019/05/23/1/">TAPD git关联提交</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 IITII 的个人博客">IITII</a></p>
   <p><span>发布时间:</span>2019年05月23日 - 00:05</p>
-  <p><span>最后更新:</span>2019年05月25日 - 00:05</p>
+  <p><span>最后更新:</span>2019年05月25日 - 13:05</p>
   <p><span>原始链接:</span><a href="/2019/05/23/1/" title="TAPD git关联提交">https://iitii.github.io/2019/05/23/1/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://iitii.github.io/2019/05/23/1/" aria-label="复制成功！"></i></span>
   </p>
