@@ -147,18 +147,21 @@
 
 
 
-  <meta name="description" content="Windows命令行代理 因为在Win10上测试时 powershell 和 cmd 进行代理使用的命令是相同的，就不再赘述  标准：12set http_proxy=http://user:password@IP:port set https_proxy=https://user:password@IP:port 范例：12set http_proxy=http://localhost:1080">
+  <meta name="description" content="为 Windows 的 powershell 和 cmd 以及 Linux 终端设置和清除命令行代理">
 <meta name="keywords" content="Windows,Linux,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="命令行代理方式">
 <meta property="og:url" content="https://iitii.github.io/2018/12/19/命令行代理/index.html">
 <meta property="og:site_name" content="Hello Memo">
-<meta property="og:description" content="Windows命令行代理 因为在Win10上测试时 powershell 和 cmd 进行代理使用的命令是相同的，就不再赘述  标准：12set http_proxy=http://user:password@IP:port set https_proxy=https://user:password@IP:port 范例：12set http_proxy=http://localhost:1080">
+<meta property="og:description" content="为 Windows 的 powershell 和 cmd 以及 Linux 终端设置和清除命令行代理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-13T09:13:44.000Z">
+<meta property="og:image" content="https://iitii.github.io/images/terminal-proxy/system.png">
+<meta property="og:image" content="https://iitii.github.io/images/terminal-proxy/evn.png">
+<meta property="og:updated_time" content="2019-07-12T02:51:37.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行代理方式">
-<meta name="twitter:description" content="Windows命令行代理 因为在Win10上测试时 powershell 和 cmd 进行代理使用的命令是相同的，就不再赘述  标准：12set http_proxy=http://user:password@IP:port set https_proxy=https://user:password@IP:port 范例：12set http_proxy=http://localhost:1080">
+<meta name="twitter:description" content="为 Windows 的 powershell 和 cmd 以及 Linux 终端设置和清除命令行代理">
+<meta name="twitter:image" content="https://iitii.github.io/images/terminal-proxy/system.png">
 
 
 
@@ -505,7 +508,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-13 17:13:44" itemprop="dateModified" datetime="2019-02-13T17:13:44+08:00">2019-02-13</time>
+                <time title="修改时间：2019-07-12 10:51:37" itemprop="dateModified" datetime="2019-07-12T10:51:37+08:00">2019-07-12</time>
               
             
           </span>
@@ -589,7 +592,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">483</span>
+                <span title="本文字数">1k</span>
               
 
               
@@ -603,11 +606,13 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
 
+          
+            <div class="post-description">为 Windows 的 powershell 和 cmd 以及 Linux 终端设置和清除命令行代理</div>
           
 
         </div>
@@ -626,15 +631,38 @@
         <h3 id="Windows命令行代理"><a href="#Windows命令行代理" class="headerlink" title="Windows命令行代理"></a>Windows命令行代理</h3><blockquote>
 <p>因为在Win10上测试时 <code>powershell</code> 和 <code>cmd</code> 进行代理使用的命令是相同的，就不再赘述</p>
 </blockquote>
-<h4 id="标准："><a href="#标准：" class="headerlink" title="标准："></a>标准：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="POWERSHELL"><figure class="iseeu highlight /powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set http_proxy=http://user:password@IP:port </span><br><span class="line">set https_proxy=https://user:password@IP:port</span><br></pre></td></tr></table></figure></div>
-<h4 id="范例："><a href="#范例：" class="headerlink" title="范例："></a>范例：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="POWERSHELL"><figure class="iseeu highlight /powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set http_proxy=http://localhost:<span class="number">1080</span></span><br><span class="line">set https_proxy=https://localhost:<span class="number">1080</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="POWERSHELL"><figure class="iseeu highlight /powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set http_proxy=http://user:password@IP:port </span><br><span class="line">set https_proxy=https://user:password@IP:port</span><br></pre></td></tr></table></figure></div>
+<h4 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="POWERSHELL"><figure class="iseeu highlight /powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set http_proxy=http://localhost:<span class="number">1080</span></span><br><span class="line">set https_proxy=https://localhost:<span class="number">1080</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="清除代理"><a href="#清除代理" class="headerlink" title="清除代理"></a>清除代理</h4><blockquote>
+<p>对于临时代理，目前没有什么好的办法，只能关掉重开 powershell。<br>有人说下面这种方法能用  </p>
+</blockquote>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="POWERSHELL"><figure class="iseeu highlight /powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不带参数</span></span><br><span class="line">set http_proxy=</span><br><span class="line">set https_proxy=</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p> 对于系统代理(永久代理)，直接清除环境变量就好了<br>同理，如果想设置为系统代理(永久代理)，直接添加环境变量就好了  </p>
+</blockquote>
+<p><img src="/images/terminal-proxy/system.png" alt="alt" title="系统属性-&gt;高级"><br><img src="/images/terminal-proxy/evn.png" alt="alt" title="环境变量-&gt;用户变量"></p>
 <hr>
-<h3 id="Linux-amp-Git-命令行代理"><a href="#Linux-amp-Git-命令行代理" class="headerlink" title="Linux &amp; Git 命令行代理"></a>Linux &amp; Git 命令行代理</h3><h4 id="标准：-1"><a href="#标准：-1" class="headerlink" title="标准："></a>标准：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy = user:password@IP:port</span><br><span class="line"><span class="built_in">export</span> https_proxy = user:password@IP:port</span><br></pre></td></tr></table></figure></div>
-<h4 id="范例：-1"><a href="#范例：-1" class="headerlink" title="范例："></a>范例：</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy = localhost:1080</span><br><span class="line"><span class="built_in">export</span> https_proxy = localhost:1080</span><br></pre></td></tr></table></figure></div>
+<h3 id="Linux-amp-Git-命令行代理"><a href="#Linux-amp-Git-命令行代理" class="headerlink" title="Linux &amp; Git 命令行代理"></a>Linux &amp; Git 命令行代理</h3><h4 id="标准-1"><a href="#标准-1" class="headerlink" title="标准"></a>标准</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=user:password@IP:port</span><br><span class="line"><span class="built_in">export</span> https_proxy=user:password@IP:port</span><br></pre></td></tr></table></figure></div>
+<h4 id="范例-1"><a href="#范例-1" class="headerlink" title="范例"></a>范例</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=localhost:1080</span><br><span class="line"><span class="built_in">export</span> https_proxy=localhost:1080</span><br></pre></td></tr></table></figure></div>
+<h4 id="清除代理-1"><a href="#清除代理-1" class="headerlink" title="清除代理"></a>清除代理</h4><blockquote>
+<p>对于临时代理，可以关掉重开 Terminal<br>也可以用以下方法  </p>
+</blockquote>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不带参数</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=</span><br><span class="line"><span class="built_in">export</span> https_proxy=</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p> 对于系统代理(永久代理)，直接清除环境变量就好了<br>同理，如果想设置为系统代理(永久代理)，直接添加环境变量就好了<br>推荐在 <em>~/.bashrc</em> 里面设置  </p>
+</blockquote>
+<ul>
+<li>设置代理 (<strong>bash</strong>)</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">"export http_proxy=localhost:1080\nexport https_proxy=localhost:1080"</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>清除代理 (<strong>bash</strong>)</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">"export http_proxy=\nexport https_proxy="</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure></div>
 <hr>
 <h3 id="验证是否配置成功-："><a href="#验证是否配置成功-：" class="headerlink" title="验证是否配置成功 ："></a>验证是否配置成功 ：</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl google.com</span><br></pre></td></tr></table></figure></div>
 <blockquote>
-<p>如果返回的消息中含有200，301状态码，皆表示已连通</p>
+<p>如果返回的消息中含有 <em>200</em>，<em>301</em> 状态码，皆表示已连通<br>如果等待一段时间后无响应或返回 <em>404</em>，则代表已断开  </p>
 </blockquote>
 
       
@@ -681,7 +709,7 @@
   <p><span>本文标题:</span><a href="/2018/12/19/命令行代理/">命令行代理方式</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 IITII 的个人博客">IITII</a></p>
   <p><span>发布时间:</span>2018年12月19日 - 17:12</p>
-  <p><span>最后更新:</span>2019年02月13日 - 17:02</p>
+  <p><span>最后更新:</span>2019年07月12日 - 10:07</p>
   <p><span>原始链接:</span><a href="/2018/12/19/命令行代理/" title="命令行代理方式">https://iitii.github.io/2018/12/19/命令行代理/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://iitii.github.io/2018/12/19/命令行代理/" aria-label="复制成功！"></i></span>
   </p>
@@ -1009,7 +1037,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows命令行代理"><span class="nav-number">1.</span> <span class="nav-text">Windows命令行代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准："><span class="nav-number">1.1.</span> <span class="nav-text">标准：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例："><span class="nav-number">1.2.</span> <span class="nav-text">范例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-amp-Git-命令行代理"><span class="nav-number">2.</span> <span class="nav-text">Linux &amp; Git 命令行代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准：-1"><span class="nav-number">2.1.</span> <span class="nav-text">标准：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例：-1"><span class="nav-number">2.2.</span> <span class="nav-text">范例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证是否配置成功-："><span class="nav-number">3.</span> <span class="nav-text">验证是否配置成功 ：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows命令行代理"><span class="nav-number">1.</span> <span class="nav-text">Windows命令行代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准"><span class="nav-number">1.1.</span> <span class="nav-text">标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例"><span class="nav-number">1.2.</span> <span class="nav-text">范例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清除代理"><span class="nav-number">1.3.</span> <span class="nav-text">清除代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-amp-Git-命令行代理"><span class="nav-number">2.</span> <span class="nav-text">Linux &amp; Git 命令行代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准-1"><span class="nav-number">2.1.</span> <span class="nav-text">标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例-1"><span class="nav-number">2.2.</span> <span class="nav-text">范例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清除代理-1"><span class="nav-number">2.3.</span> <span class="nav-text">清除代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证是否配置成功-："><span class="nav-number">3.</span> <span class="nav-text">验证是否配置成功 ：</span></a></li></ol></div>
             
 
           </div>
@@ -1043,7 +1071,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">60k</span>
+    <span title="站点总字数">61k</span>
   
 
   
@@ -1054,7 +1082,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:50</span>
+    <span title="站点阅读时长">1:51</span>
   
 </div>
 
@@ -1097,7 +1125,7 @@ setInterval("createtime()",250);
 <!--
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共20.1k字</span>
+  <span class="post-count">博客全站共20.4k字</span>
 </div>
 -->
 <!--增加人数统计-->
