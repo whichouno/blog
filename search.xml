@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[UFW 的简单使用]]></title>
+    <url>%2F2019%2F08%2F02%2F1%2F</url>
+    <content type="text"><![CDATA[介绍 Ubuntu 的默认防火墙配置工具是 ufw，是为了简化 iptables防火墙配置而开发， ufw提供了一种友好的方式来创建基于IPv4或IPv6主机的防火墙。一般情况下系统默认禁用UFW。 Gufw 是一个 ufw 的图形界面版本。 基本的语法和一些示例 默认规则适用于普通家庭用户 当您打开UFW时，它使用一组默认规则（配置文件），所有“传入”都被拒绝，然后用户再定义一些例外的端口或应用，就差不多了 启用和禁用启用UFW1sudo ufw enable 检查UFW的状态 1sudo ufw status 请注意，默认情况下，deny正在应用于传入。有一些例外，可以在此命令的输出中找到: sudo ufw show raw 您也可以通过读取 /etc/ufw 中的规则文件（后缀名：.rules），来查看防火墙规则。 禁用UFW 1sudo ufw disable 允许和拒绝（特定规则）允许 1sudo ufw allow &lt;port&gt;/&lt;optional: protocol&gt; 示例 允许在端口53上传入tcp和udp数据包 1sudo ufw allow 53 允许端口53上的传入tcp数据包 1sudo ufw allow 53/tcp 允许端口53上的传入udp数据包 1sudo ufw allow 53/udp 拒绝 1sudo ufw deny &lt;port&gt;/&lt;optional: protocol&gt; 示例 拒绝端口53上的tcp和udp数据包 1sudo ufw deny 53 拒绝端口53上的传入tcp数据包 1sudo ufw deny 53/tcp 拒绝端口53上传入的udp数据包 1sudo ufw deny 53/udp 删除现有规则 要删除规则，只需在原始规则前加上删除。 例如，如果原始规则是： 1ufw deny 80/tcp 用这一条命令来删除它 1sudo ufw delete deny 80/tcp 服务您也可以允许或拒绝服务名称，因为ufw会从从 /etc/services读取服务名称。 查看所有服务1less /etc/services 按服务名称允许 1sudo ufw allow &lt;service name&gt; 示例 允许ssh1sudo ufw allow ssh 按服务名称拒绝 1sudo ufw deny &lt;service name&gt; 示例 拒绝ssh1sudo ufw deny ssh Status 检查ufw的状态将告诉您是否启用了ufw，并列出了应用于iptables的ufw规则。 查看状态 1234567891011ubuntu@ubuntu# sudo ufw statusFirewall loadedTo Action From-- ------ ----22:tcp DENY 192.168.0.122:udp DENY 192.168.0.122:tcp DENY 192.168.0.722:udp DENY 192.168.0.722:tcp ALLOW 192.168.0.0/2422:udp ALLOW 192.168.0.0/24 如果未启用ufw，则输出将为 12sudo ufw statusStatus: inactive 日志 要启用日志记录，请使用: sudo ufw logging on 要禁用日志记录，请使用：sudo ufw logging off 高级语法 您还可以使用更全面的语法，指定源和目标地址，端口和协议。 允许访问按特定IP允许：1sudo ufw allow from &lt;ip address&gt; 示例 允许来自207.46.232.182的数据包 1sudo ufw allow from 207.46.232.182 允许子网 你也许会使用网关来配置 1sudo ufw allow from 192.168.1.0/24 允许特定端口，IP地址 1sudo ufw allow from &lt;target&gt; to &lt;destination&gt; port &lt;port number&gt; 示例 允许使用TCP访问端口22的IP地址192.168.0.41sudo ufw allow from 192.168.0.4 to any port 22 允许特定端口，IP地址和协议 1sudo ufw allow from &lt;target&gt; to &lt;destination&gt; port &lt;port number&gt; proto &lt;protocol name&gt; 示例 允许使用 TCP 访问端口22的IP地址192.168.0.41sudo ufw allow from 192.168.0.4 to any port 22 proto tcp 禁用 ping 默认允许ping，如果要禁用 ping， 您可以在 /etc/ufw/before.rules 里面删除以下行 123456# ok icmp codes-A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT-A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT-A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT-A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT 或者把 ACCEPT 修改为 DROP 123456# ok icmp codes-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP-A ufw-before-input -p icmp --icmp-type source-quench -j DROP-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP-A ufw-before-input -p icmp --icmp-type echo-request -j DROP 拒绝访问按特定IP拒绝1sudo ufw deny from &lt;ip address&gt; 示例 阻止来自207.46.232.182的数据包：1sudo ufw deny from 207.46.232.182 通过特定端口和IP地址拒绝 1sudo ufw deny from &lt;ip address&gt; to &lt;protocol&gt; port &lt;port number&gt; 示例 拒绝所有协议的端口22的IP地址192.168.0.1访问1sudo ufw deny from 192.168.0.1 to any port 22 使用规则的编号进行管理显示规则的顺序和ID号 1sudo ufw status numbered 编辑编号规则删除编号规则 然后，您可以使用该号码删除规则。这将删除第一个规则，规则将向上移动以填充列表。 1sudo ufw delete 1 插入编号规则 1sudo ufw insert 1 allow from &lt;ip address&gt; 高级示例 阻止从192.168.0.1和192.168.0.7访问端口22，但允许所有其他192.168.0.x IP使用tcp访问端口22 123sudo ufw deny from 192.168.0.1 to any port 22sudo ufw deny from 192.168.0.7 to any port 22sudo ufw allow from 192.168.0.0/24 to any port 22 proto tcp 这将特定规则放在第一位，将通用第二位放在第二位。一旦规则匹配，其他规则将不会被匹配. 因此您必须首先列出特定规则。 ‘’’随着规则的变化，您可能需要删除旧规则，以确保按照正确的顺序放置新规则。 阻止访问端口22到192.168.0.3以及192.168.0.1和192.168.0.7 1234567891011121314151617181920212223242526sudo ufw delete allow from 192.168.0.0/24 to any port 22sudo ufw statusFirewall loadedTo Action From-- ------ ----22:tcp DENY 192.168.0.122:udp DENY 192.168.0.122:tcp DENY 192.168.0.722:udp DENY 192.168.0.7sudo ufw deny 192.168.0.3 to any port 22sudo ufw allow 192.168.0.0/24 to any port 22 proto tcpsudo ufw statusFirewall loadedTo Action From-- ------ ----22:tcp DENY 192.168.0.122:udp DENY 192.168.0.122:tcp DENY 192.168.0.722:udp DENY 192.168.0.722:tcp DENY 192.168.0.322:udp DENY 192.168.0.322:tcp ALLOW 192.168.0.0/24 如果你只是添加拒绝规则，那么 allow 的优先级就会超过它并被应用. 解释日志条目根据对报文的回复 SPT和DPT值以及SRC和DST值通常是分析防火墙日志时要关注的值。 伪日志条目 1Feb 4 23:33:37 hostname kernel: [ 3529.289825] [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55:66:77:88:99:aa:bb:cc:dd SRC=444.333.222.111 DST=111.222.333.444 LEN=103 TOS=0x00 PREC=0x00 TTL=52 ID=0 DF PROTO=UDP SPT=53 DPT=36427 LEN=83 Date:查看日期和时间是一种很好的做法。如果事情发生故障或时间块丢失，那么攻击者可能会破坏您的日志。 hostname:服务器的主机名 uptime:正常运行的时间 Logged Event:记录事件的简短描述;例如[UFW BLOCK] IN:如果有，则事件是传入事件 OUT:如果有，则事件是传出事件。 MAC: 这提供了目标MAC，源MAC和EtherType字段的14字节组合，遵循以太网II报头中的顺序。见 以太网帧 和 EtherType 了解更多信息。 [UFW BLOCK]：这是记录事件的描述开始的位置。在此例中，它表示阻止了连接。 IN：如果它包含一个值，那么代表该事件是传入事件 OUT：如果它包含一个值，那么代表事件是传出事件 MAC：目的地和源 MAC 地址的组合 SRC：包源的 IP DST：包目的地的 IP LEN：数据包长度 TTL：数据包 TTL，或称为 time to live。 在找到目的地之前，它将在路由器之间跳跃，直到它过期。 PROTO：数据包的协议 SPT：包的源端口 DPT：包的目标端口 WINDOW：发送方可以接收的数据包的大小 SYN URGP：指示是否需要三次握手。 0 表示不需要。 参见 UFW]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>UFW</tag>
+        <tag>firewall</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于IDEA的JDK错误的解决方法]]></title>
     <url>%2F2019%2F07%2F18%2F1%2F</url>
     <content type="text"><![CDATA[软件要求: 已安装 Java 8 及以上版本 Java 8: File ? Project Structure ? Settings… ? 开启 Lambdas 语法支持 找到以下内容：File -&gt; Project Structure -&gt; Project -&gt; Project language level -&gt; 8 - Lambdas, type annotations etc. 点击 OK 按钮 ERROR: @Override is not allowed when implementing interface method 找到以下内容：File -&gt; Project Structure -&gt; Modules -&gt; Language level 至少选择 6 以上版本，推荐 8. 点击 OK 按钮 Error:java: Compilation failed: internal java compiler error 找到以下内容：File -&gt; Settings… -&gt; Build, Execution, Deployment -&gt; Compiler -&gt; Java Compiler -&gt; Project bytecode version &amp; Target bytecode version 选择对应版本 如上图的话，则需要选择 8 点击 OK 按钮]]></content>
@@ -202,10 +215,10 @@
       </categories>
       <tags>
         <tag>config</tag>
-        <tag>VPN</tag>
         <tag>Linux</tag>
-        <tag>proxy</tag>
         <tag>Ubuntu18.04</tag>
+        <tag>VPN</tag>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
@@ -269,8 +282,8 @@
         <category>proxy</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>Linux</tag>
+        <tag>Windows</tag>
         <tag>proxy</tag>
       </tags>
   </entry>
