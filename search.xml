@@ -135,8 +135,8 @@
         <category>Windows</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>config</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -265,8 +265,8 @@
         <category>VPN</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>config</tag>
+        <tag>Linux</tag>
         <tag>VPN</tag>
         <tag>proxy</tag>
         <tag>Ubuntu18.04</tag>
@@ -281,8 +281,8 @@
         <category>IIS10</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>config</tag>
+        <tag>Windows</tag>
         <tag>IIS</tag>
         <tag>PHP</tag>
       </tags>
@@ -319,8 +319,8 @@
         <category>Ubuntu</category>
       </categories>
       <tags>
-        <tag>grub</tag>
         <tag>config</tag>
+        <tag>grub</tag>
       </tags>
   </entry>
   <entry>
@@ -360,8 +360,8 @@
         <category>space</category>
       </categories>
       <tags>
-        <tag>VPS</tag>
         <tag>config</tag>
+        <tag>VPS</tag>
         <tag>space</tag>
       </tags>
   </entry>
@@ -373,8 +373,8 @@
         <category>开发环境</category>
       </categories>
       <tags>
-        <tag>Clion</tag>
         <tag>ssh</tag>
+        <tag>Clion</tag>
         <tag>WSL</tag>
       </tags>
   </entry>
