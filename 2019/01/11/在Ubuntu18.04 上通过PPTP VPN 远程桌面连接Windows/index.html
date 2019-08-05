@@ -148,7 +148,7 @@
 
 
   <meta name="description" content="配置VPN并连接配置VPN Setting -&amp;gt; Network -&amp;gt; VPN -&amp;gt; 点击“+” -&amp;gt; Add VPN -&amp;gt; PPTP -&amp;gt; (添加必要的信息，其中Gateway为远程VPN地址)  修改Advanced选项（下面的我自己的方案）     连接VPN   连接VPN时可能出现的问题问题描述： 在用户名等完全正确的情况下无法连接VPN，点击连接，没">
-<meta name="keywords" content="config,Linux,Ubuntu18.04,VPN,proxy">
+<meta name="keywords" content="config,Linux,VPN,proxy,Ubuntu18.04">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Ubuntu18.04 上通过PPTP VPN 远程桌面连接Windows">
 <meta property="og:url" content="https://iitii.github.io/2019/01/11/在Ubuntu18.04 上通过PPTP VPN 远程桌面连接Windows/index.html">
@@ -719,11 +719,11 @@
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Ubuntu18-04/" rel="tag"># Ubuntu18.04</a>
-          
             <a href="/tags/VPN/" rel="tag"># VPN</a>
           
             <a href="/tags/proxy/" rel="tag"># proxy</a>
+          
+            <a href="/tags/Ubuntu18-04/" rel="tag"># Ubuntu18.04</a>
           
         </div>
       
@@ -860,7 +860,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1012,7 +1012,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1115,7 +1125,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">67k</span>
+    <span title="站点总字数">75k</span>
   
 
   
@@ -1126,7 +1136,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">2:17</span>
   
 </div>
 
@@ -1149,19 +1159,19 @@
 <!--添加网站运行时间-->
 <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
 <script>
-    var now = new Date(); 
-    function createtime() { 
-        var grt= new Date("02/02/2019 17:00:00");//此处修改你的建站时间或者网站上线时间 
-        now.setTime(now.getTime()+250); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-    } 
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("09/27/2018 00:12:55");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
 setInterval("createtime()",250);
 </script>
 
@@ -1169,7 +1179,7 @@ setInterval("createtime()",250);
 <!--
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22.5k字</span>
+  <span class="post-count">博客全站共25k字</span>
 </div>
 -->
 <!--增加人数统计-->
