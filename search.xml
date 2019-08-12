@@ -20,8 +20,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>mount</tag>
+        <tag>Linux</tag>
         <tag>uas</tag>
       </tags>
   </entry>
@@ -33,9 +33,9 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>grub</tag>
         <tag>lvm</tag>
-        <tag>Linux</tag>
         <tag>boot</tag>
       </tags>
   </entry>
@@ -268,8 +268,8 @@
         <tag>config</tag>
         <tag>Linux</tag>
         <tag>VPN</tag>
-        <tag>proxy</tag>
         <tag>Ubuntu18.04</tag>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
