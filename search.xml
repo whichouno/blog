@@ -117,7 +117,7 @@
   <entry>
     <title><![CDATA[Ubuntu使用命令修改屏幕的显示方向]]></title>
     <url>%2F2019%2F04%2F22%2F1%2F</url>
-    <content type="text"><![CDATA[Ubuntu踩坑记 之前VM的查看-&gt;立即适应客户机还没有变灰的时候倒是可以通过这个调屏幕的方向，不过天有不测风云 :-( PS: 在更改屏幕方向以后如果您想保持这个显示方向的话，还请在 setting-&gt;Display 里面修改显示器方向后保存。如果不，重启之后系统就会恢复原来的显示器方向。 恢复默认方向1xrandr -o normal 左旋转 同理右旋转和反转屏幕等操作也类似，更多操作还请参考 xrandr --help 1xrandr -o left 查看当前显示器的输出信息1xrandr -o q 旋转某个视频接口的视频输出方向123xrandr --output HDMI1 --rotate leftxrandr --output HDMI1 --rotate normal]]></content>
+    <content type="text"><![CDATA[Ubuntu踩坑记 之前VM的查看-&gt;立即适应客户机还没有变灰的时候倒是可以通过这个调屏幕的方向，不过天有不测风云 :-( PS: 在更改屏幕方向以后如果您想保持这个显示方向的话，还请在 setting-&gt;Display 里面修改显示器方向后保存。如果不，重启之后系统就会恢复原来的显示器方向。 具体操作： 打开 Setting -&gt; Devices -&gt; Displays -&gt; Orientation 点击修改，其中 Landscape 表示正常，Portrait right 代表向右旋转，Portrait left 代表向左旋转，Landscape flipped 代表翻转 先修改为不正常，然后如果鼠标错位了的话，直接通过 Tab键和回车键 进行选择。 最后修改为正常，然后再进行保存就 ok 了。 恢复默认方向1xrandr -o normal 左旋转 同理右旋转和反转屏幕等操作也类似，更多操作还请参考 xrandr --help 1xrandr -o left 查看当前显示器的输出信息1xrandr -o q 旋转某个视频接口的视频输出方向123xrandr --output HDMI1 --rotate leftxrandr --output HDMI1 --rotate normal]]></content>
       <categories>
         <category>config</category>
       </categories>
@@ -267,9 +267,9 @@
       <tags>
         <tag>config</tag>
         <tag>Linux</tag>
+        <tag>Ubuntu18.04</tag>
         <tag>VPN</tag>
         <tag>proxy</tag>
-        <tag>Ubuntu18.04</tag>
       </tags>
   </entry>
   <entry>
