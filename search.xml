@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[如何快速创建一个基于H5的折线图]]></title>
+    <url>%2F2019%2F10%2F11%2F1%2F</url>
+    <content type="text"><![CDATA[Demo 项目链接：https://github.com/IITII/SimpleLineChart Demo 如何使用？ git clone 项目 使用 nginx 或者其他 web 服务器去为其提供服务 打开浏览器，访问 localhost 举例 实现确保该目录在 nginx 的 web 服务路径下面 12345678server &#123; listen 80 default_server; server_name _; location / &#123; root /usr/share/nginx/html; index index.html index.htm; &#125;&#125; 直接读取 txt 文件版本12cd /usr/share/nginx/htmlgit clone https://github.com/IITII/SimpleLineChart 打开浏览器，访问 localhost/SimpleLineChart/ 即可看到效果 JS 生成配置文件版本12cd /usr/share/nginx/htmlgit clone https://github.com/IITII/SimpleLineChart 打开浏览器，访问 localhost/SimpleLineChart/JSONLineChart 即可看到效果 添加数据直接读取 txt 文件版本 直接向 label.txt,label.txt,label.txt 这三个文件里面添加数据即可JS 生成配置文件版本 在修改完 line.json 后请务必运行一下 node JSONLineChart/index.js 以重新生成 config.json 原本的 line.json, 如下： 12345678910111213&#123; "labels": ["label"], "datasets": [ &#123; "label": "label1", "data": [40,56], "fill": false, "backgroundColor": "rgb(255, 99, 132)", "borderColor": "rgb(255, 99, 132)", "lineTension": 0.1 &#125; ]&#125; 添加 x 轴数据：在 line.json 的 labels 里面添加数据 12345678910111213&#123; "labels": ["label","2323","4444"], "datasets": [ &#123; "label": "label1", "data": [40,56], "fill": false, "backgroundColor": "rgb(255, 99, 132)", "borderColor": "rgb(255, 99, 132)", "lineTension": 0.1 &#125; ]&#125; 添加点：在 line.json 的 datasets[*].data 里面添加数据 12345678910111213&#123; "labels": ["label"], "datasets": [ &#123; "label": "label1", "data": [40,56,40,56,40,56,40,56], "fill": false, "backgroundColor": "rgb(255, 99, 132)", "borderColor": "rgb(255, 99, 132)", "lineTension": 0.1 &#125; ]&#125; 添加线：在 line.json 的 datasets 里面添加数据 123456789101112131415161718192021&#123; "labels": ["label"], "datasets": [ &#123; "label": "label1", "data": [40,56], "fill": false, "backgroundColor": "rgb(255, 99, 132)", "borderColor": "rgb(255, 99, 132)", "lineTension": 0.1 &#125;, &#123; "label": "label1", "data": [40,56,56,78,56,78,56,78], "fill": false, "backgroundColor": "rgb(25, 99, 132)", "borderColor": "rgb(255, 9, 132)", "lineTension": 0.1 &#125; ]&#125; 个性化 直接读取 txt 文件版本 根据需要可修改以下字段 Title: options.title.text in config.json X axis title: options.scales.xAxes.xAxes[0].scaleLabel.labelString in config.json Y axis title: options.scales.yAxes.yAxes[0].scaleLabel.labelString in config.json Line label: data.datasets[*].data in config.json Line color: data.datasets[*].borderColor in config.json Label background color: data.datasets[*].backgroundColor in config.json JS 生成配置文件版本 根据需要可修改以下字段 Title: options.title.text in config.json X axis title: options.scales.xAxes.xAxes[0].scaleLabel.labelString in config.json Y axis title: options.scales.yAxes.yAxes[0].scaleLabel.labelString in config.json Line label: datasets[*].label in line.json Line color: datasets[*].borderColor in line.json Label background color: datasets[*].backgroundColor in line.json Advance 图表有的时候回闪烁，BUG？NO。 在 options.tooltips 里面指定 &quot;animation&quot;: {&quot;duration&quot;: 0} 即可 你还可以修改 options 里面的其他的参数 参见： 官方文档：https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties 网友翻译：https://segmentfault.com/a/1190000008498664#articleHeader16]]></content>
+      <categories>
+        <category>前端</category>
+        <category>HTML</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>折线图</tag>
+        <tag>在线图表</tag>
+        <tag>chart.js</tag>
+        <tag>chart</tag>
+        <tag>HTML</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用tar命令来实现Linux系统的备份与恢复]]></title>
     <url>%2F2019%2F08%2F06%2F1%2F</url>
     <content type="text"><![CDATA[本文适用于具有一定基础和动手能力的 Linux 用户, 不清楚之处还请自行百度系统的备份与恢复具有很大风险，在操作之前还请备份重要数据先。 以 Ubuntu18.04 系统为例 系统配置 OS: Ubuntu 18.04 mem: 16G disk1: TOSHIBA 256G 2280 m.2 sata disk2: HS-C2000Pro 1024 Display: NVIDIA GTX 1050 (cuda 已配置) 磁盘分区表 1234567891011root@l: lsblkNAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTsda 8:0 0 256G 0 disk├─sda1 8:1 0 99M 0 part /boot/efi├─sda2 8:2 0 216M 0 part└─sda3 8:3 0 40G 0 part /sdb 8:0 0 1024G 0 disk├─sdb1 8:1 0 99M 0 part├─sdb2 8:2 0 128M 0 part ├─sdb3 8:2 0 873G 0 part └─sdb4 8:3 0 150G 0 part 对于整个系统进行备份与恢复 示例：将系统从 /dev/sda3 移动到 /dev/sdb4准备工作 删除不必要的日志文件 取消不重要 盘/分区 的挂载 开始备份 同理，您也可以将压缩以后的文件任意移动到一个足够大的分区中，然后使用U盘引导，进入 live 桌面 当然你也可以通过网络实现实时远程备份，如使用 netcat(nc) 和 ssh，或者先备份，之后再通过网络发送压缩包。 进入了单人模式，首先将不必要的挂载分区给取消挂载 挂载要存放文件的分区 压缩根目录 1234567891011121314#备份系统root@l: cd / &amp;&amp; apt cleanroot@l: mount /dev/sdb4 /media/Droot@l: tar -cvpzf /media/D/backup.tar.gz \--exclude=/media \--exclude=/media/D/backup.tar.gz \--exclude=/proc \--exclude=/tmp \--exclude=/mnt \--exclude=/dev \--exclude=/sys \--exclude=/run \--exclude=/var/cache/apt/archives \--one-file-system / c：创建压缩包 v：输出压缩信息 p：保持文件原有的权限和属性 z：压缩文件为 .gz f：指定文件名 –exclude=/example/path：不压缩指定路径下面的文件 -one-file-system：不备份其他文件系统中的文件（只备份和系统根分区一样分区类型的文件） 如果您希望其他文件系统（例如 /home分区或安装在 /media备份中的外部介质），您需要单独备份它们，或省略此标志。如果省略此标志，则需要添加几个 –exclude= 参数以避免您不想要的文件系统。 /proc 和 /sys 是虚拟文件系统，它为正在运行的内核的变量提供接口，因此没有必要尝试备份或还原它们。 /dev 是一个tmpfs，其内容由udev动态创建和删除，因此您也没有必要尝试备份或还原它。同样，/run 是一个 tmpfs，它保存有关系统运行的一些变量. For more: Here 注意：--exclude= 的排除是递归的，把相对越长的目录写在前面。要不然就不会备份或者排除该目录 分卷压缩 注意：因为 FAT32 最大支持文件大小为4G而且系统备份 一般 比较大（一般 30G 起步），不强制要求，自行抉择 压缩后分卷 split -d -b 3900m /path/to/backup.tar.gz /name/of/backup.tar.gz 简单地拆分由/path/to/backup.tar.gz指定的现有文件。压缩前分卷 tar -cvpz &lt;put options here&gt; / | split -d -b 3900m - /name/of/backup.tar.gz 直到管道（|）的前半部分与我们之前的例子相同，但是省略了 f 选项。去掉 f 参数，tar会将存档输出到标准输出，然后通过管道输出到split命令。 -d 此选项表示存档后缀将是数字而不是字母，每个拆分将从01开始顺序，并随每个新的拆分文件而增加。 -b 此选项指定要拆分的大小，在此示例中，已将其设置为 3900MB 以适合FAT32分区。 - 连字符是输入文件的占位符（通常是已创建的实际文件），并指示拆分以使用标准输入。 /name/of/backup.tar.gz 是将应用于所有生成的拆分文件的前缀。它应该指向您希望放置存档的文件夹。在这个示例中，第一个拆分归档文件将位于 /name/of/ 目录中，并命名为 backup.tar.gz.01 合并分卷文件 cd 进入文件所在的目录 使用 cat *tar.gz* |tar -xvpzf - -C / 提取到根目录（也可以修改为其他目录） 开始恢复 对于同一台电脑进行备份直接跟着教程走不同的电脑实现备份的话，可以先做一个启动盘，然后U盘启动进入live桌面，接下来操作是一样的对于已有系统想替换掉的话，可以和第二点进行一样的做法，不过记得 备份和格式化分区 重启，正常进入系统 挂载要安装系统的分区 解压 创建缺少的文件夹 挂载启动分区 安装 grub reboot 123456789101112131415161718root@l: mount /dev/sdb4 /media/Droot@l: cd /media/D/root@l: sudo tar -xvpzf /path/to/backup.tar.gz -C /media/D/ --numeric-ownerroot@l: mkdir proc sys mnt media tmp dev runroot@l: sudo -s# 挂载启动分区root@l: mount /dev/sdb1 /media/croot@l: mount -o bind /sys sysroot@l: mount -o proc rpocroot@l: cd / ; for f in dev dev/pts proc ; do mount --bind /$f /media/D/$f ; doneroot@l: chroot /media/D/root@l: grub-install --recheck --no-floppy /dev/sdb1root@l: echo "`blkid | grep sda1 | awk '&#123;printf $2&#125;' | sed 's/"//g'` /opt ext4 defaults 0 0" &gt;&gt; /etc/fstabroot@l: echo "`blkid | grep sda4 | awk '&#123;printf $2&#125;' | sed 's/"//g'` /opt ext4 defaults 0 0" &gt;&gt; /etc/fstabroot@l: vim /etc/fstabroot@l: update-grubroot@l: exitroot@l: reboot x 解压文件 -C 解压至指定路径 –numeric-owner - 此选项告诉tar恢复归档文件的数字所有者，而不是匹配要还原的环境中的任何用户名。因为这是您要恢复的系统中的用户 id:s 不一定与您用于恢复的系统匹配(例如: live CD ) 参见 Ubuntu Documentation: TAR Install Grub from chroot +实践]]></content>
@@ -267,9 +286,9 @@
       <tags>
         <tag>config</tag>
         <tag>Linux</tag>
-        <tag>Ubuntu18.04</tag>
         <tag>VPN</tag>
         <tag>proxy</tag>
+        <tag>Ubuntu18.04</tag>
       </tags>
   </entry>
   <entry>
