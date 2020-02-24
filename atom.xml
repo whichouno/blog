@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iitii.github.io/"/>
-  <updated>2020-02-09T05:52:18.866Z</updated>
+  <updated>2020-02-24T08:28:48.643Z</updated>
   <id>https://iitii.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker 安装 Oracle 数据库</title>
+    <link href="https://iitii.github.io/2020/02/24/1/"/>
+    <id>https://iitii.github.io/2020/02/24/1/</id>
+    <published>2020-02-24T06:00:57.000Z</published>
+    <updated>2020-02-24T08:28:48.643Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>若无特殊说明，文中的 “网络畅通” 自行解决  </p></blockquote><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 <code>Docker</code></h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a><code>Windows</code></h4><h5 id="检查必需项"><a href="#检查必需项" class="headerlink" title="检查必需项"></a>检查必需项</h5><ul><li>控制面板 -&gt; 程序和功能 -&gt; 启用或关闭 <code>Windows</code> 功能 -&gt; 勾选 <code>HyperV</code> 和 <code>Containers</code> -&gt; 确定 -&gt; （待运行完成）重启电脑</li><li>必须启用 <code>HyperV</code> 和 <code>Containers</code></li></ul><p><img src="/images/docker/windows_features_enable.png" alt="Loading"></p><div class="note danger">            <ul><li>如果启用或关闭 <code>Windows</code> 功能里面没有上述两项，继续这一步，有则跳到下一步</li></ul>          </div><blockquote><p>将下述脚本分别复制黏贴保存为 <code>HyperV.cmd</code> 和 <code>Containers.cmd</code><br>或者直接从这里 <a href="/images/docker/docker.zip">下载</a><br>然后使用管理员身份运行</p></blockquote><ol><li>启用 <code>HyperV</code></li></ol><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem require Administrator</span></span><br><span class="line"><span class="built_in">pushd</span> "%~dp0"</span><br><span class="line"><span class="built_in">dir</span> /b <span class="variable">%SystemRoot%</span>\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt</span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> ('<span class="built_in">findstr</span> /i . hyper-v.txt <span class="number">2</span>^&gt;<span class="built_in">nul</span>') <span class="keyword">do</span> dism /online /norestart /add-package:"<span class="variable">%SystemRoot%</span>\servicing\Packages\<span class="variable">%%i</span>"</span><br><span class="line"><span class="built_in">del</span> hyper-v.txt</span><br><span class="line">Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL</span><br></pre></td></tr></table></figure></div><ol start="2"><li>启用 <code>Containers</code></li></ol><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem require Administrator</span></span><br><span class="line"><span class="built_in">pushd</span> "%~dp0"</span><br><span class="line"><span class="built_in">dir</span> /b <span class="variable">%SystemRoot%</span>\servicing\Packages\*containers*.mum &gt;containers.txt</span><br><span class="line"><span class="keyword">for</span> /f <span class="variable">%%i</span> <span class="keyword">in</span> ('<span class="built_in">findstr</span> /i . containers.txt <span class="number">2</span>^&gt;<span class="built_in">nul</span>') <span class="keyword">do</span> dism /online /norestart /add-package:"<span class="variable">%SystemRoot%</span>\servicing\Packages\<span class="variable">%%i</span>"</span><br><span class="line"><span class="built_in">del</span> containers.txt</span><br><span class="line">Dism /online /enable-feature /featurename:Containers -All /LimitAccess /ALL</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure></div><h5 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 <code>docker</code></h5><ol><li>保证网络畅通</li><li>浏览器打开 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">https://www.docker.com/products/docker-desktop</a></li><li>选择自己的版本</li><li>下载</li><li>双击安装</li><li>一切默认，一直点下一步</li><li>安装完成</li></ol><ul><li>如果出现 <code>Docker Desktop requires Windows 10 Pro...</code> </li></ul><p><img src="/images/docker/os_error.png" alt="Loading"></p><ol start="8"><li><code>Win + R</code> 打开运行，输入 <code>regedit</code> 回车</li><li>导航到 <code>Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion</code></li><li>修改 <code>EditionID</code> 值为 <code>Professional</code> 即可</li><li>重新执行第五步</li></ol><p><img src="/images/docker/regedit.png" alt="Loading"></p><h4 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a><code>Ubuntu</code></h4><ul><li><code>sudo apt-get update &amp;&amp; sudo apt install docker.io -y</code></li></ul><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><ol><li>保证网络畅通</li><li>打开 <a href="https://www.docker.com/" target="_blank" rel="noopener">https://www.docker.com/</a></li><li>点击 <code>Get Started</code> 旁边的 <code>Sign In</code></li><li>有账号直接登录，没账号就点击 <code>Sign Up</code> 进行注册</li><li>登录以后打开 <a href="https://hub.docker.com/_/oracle-database-enterprise-edition" target="_blank" rel="noopener">https://hub.docker.com/_/oracle-database-enterprise-edition</a></li><li>点击 <code>Proceed to Checkout</code></li><li>填写必要信息并提交</li><li>在页面右侧，我们可以看见 <code>docker pull store/oracle/database-enterprise:12.2.0.1</code></li><li>打开 <code>powershell</code> 或 <code>bash</code></li><li>设置命令行代理 (Windows 现在只能通过设置系统变量的方式给命令行设置代理) -&gt; See: <a href="https://iitii.github.io/2018/12/19/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86/">命令行代理方式</a></li><li><code>docker login</code> 使用 <code>docker info</code> 去查看登录信息，如果没有 <code>Username</code> 这一行则没有登陆</li><li>填写必要信息，密码无回显</li><li>Run: <code>docker pull store/oracle/database-enterprise:12.2.0.1</code></li><li>耐心等待</li></ol><ul><li>你也可以从别人已有的镜像 Copy 一份给自己</li></ul><ol><li><code>docker image save 12a359cd0528 &gt; oracle_12.2.0.1.tar</code></li><li><code>docker image load &lt; oracle_12.2.0.1.tar</code></li><li>耐心等待，直到输出一长串字符（假设为：12a359cd0528）</li><li><code>docker image tag 12a359cd0528 store/oracle/database-enterprise:12.2.0.1</code></li><li>输入 <code>docker images</code> 即可看见镜像</li></ol><h3 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h3><div class="note danger">            <ul><li>容器正常运行最低要求为：8GB磁盘空间和2GB RAM</li><li>其中 <code>&lt;Oracle-DB&gt;</code> 为容器名称, 默认用户名和密码为 <code>sys</code> 和 <code>Oradoc_db1</code></li></ul>          </div><ul><li><code>docker run -d -it --name &lt;Oracle-DB&gt; -P store/oracle/database-enterprise:12.2.0.1</code></li><li>Example: <code>docker run -d -it --name oracle -P store/oracle/database-enterprise:12.2.0.1</code></li><li>使用 <code>docker ps -a</code> 来查看暴露的端口和运行状态</li><li>如果启动失败先确认自己是否已经登录</li><li>使用 <code>docker logs oracle</code> 查看错误信息</li></ul><h3 id="通过-IDEA-进行远程管理-连接-可选"><a href="#通过-IDEA-进行远程管理-连接-可选" class="headerlink" title="通过 IDEA 进行远程管理/连接 [可选]"></a>通过 IDEA 进行远程管理/连接 [可选]</h3><h4 id="启用-API"><a href="#启用-API" class="headerlink" title="启用 API"></a>启用 API</h4><h5 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h5><ol><li>双击 <code>docker</code> 图标</li><li>在 <code>General</code> 界面勾选 <code>Expose daemoon on tcp://...</code> </li><li>在 <code>Docker Engine</code> 界面添加 <code>&quot;ip&quot;: &quot;0.0.0.0&quot;</code></li><li>点击 <code>Apply &amp; Restart</code></li></ol><p><img src="/images/docker/docker_api_1.jpg" alt="Loading"><br><img src="/images/docker/docker_api_2.jpg" alt="Loading"></p><h5 id="Ubuntu-1"><a href="#Ubuntu-1" class="headerlink" title="Ubuntu"></a>Ubuntu</h5><ol><li><code>vim /etc/systemd/system/docker.service.d/startup_options.conf</code></li><li>修改 <code>ExecStart=/usr/bin/docker daemon</code> 为 <code>ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2375</code></li><li><code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl restart docker.service</code></li><li><code>curl http://localhost:2375/version</code> 应该会返回一个关于当前版本的 <code>json</code> 信息</li></ol><h4 id="IDEA-连接"><a href="#IDEA-连接" class="headerlink" title="IDEA 连接"></a>IDEA 连接</h4><ol><li>打开: <code>Setting -&gt; Build, Execution, Deployment -&gt; Docker</code></li><li>点击 “+” 号</li><li>选择 <code>TCP socket</code></li><li><strong>根据自己的情况</strong>，在 <code>Engine API URL</code> 输入对应的 <code>URL</code></li><li>点击ok</li><li>等待连接</li><li>连接成功</li></ol><p><img src="/images/docker/idea1.png" alt="Loading"><br><img src="/images/docker/idea2.png" alt="Loading"></p>]]></content>
+    
+    <summary type="html">
+    
+      在 Windows 或 Ubuntu 上简简单单的安装 Oracle 数据库
+    
+    </summary>
+    
+      <category term="Oracle" scheme="https://iitii.github.io/categories/Oracle/"/>
+    
+      <category term="docker" scheme="https://iitii.github.io/categories/Oracle/docker/"/>
+    
+    
+      <category term="oracle" scheme="https://iitii.github.io/tags/oracle/"/>
+    
+      <category term="database" scheme="https://iitii.github.io/tags/database/"/>
+    
+      <category term="Windows" scheme="https://iitii.github.io/tags/Windows/"/>
+    
+      <category term="Ubuntu" scheme="https://iitii.github.io/tags/Ubuntu/"/>
+    
+      <category term="Oracle数据库" scheme="https://iitii.github.io/tags/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="安装" scheme="https://iitii.github.io/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="idea" scheme="https://iitii.github.io/tags/idea/"/>
+    
+  </entry>
   
   <entry>
     <title>V2ray NGINX+TLS+WS 一键部署</title>
@@ -188,11 +224,11 @@
       <category term="Linux" scheme="https://iitii.github.io/categories/Linux/"/>
     
     
+      <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
+    
       <category term="grub" scheme="https://iitii.github.io/tags/grub/"/>
     
       <category term="lvm" scheme="https://iitii.github.io/tags/lvm/"/>
-    
-      <category term="Linux" scheme="https://iitii.github.io/tags/Linux/"/>
     
       <category term="boot" scheme="https://iitii.github.io/tags/boot/"/>
     
@@ -392,9 +428,9 @@
       <category term="Windows" scheme="https://iitii.github.io/categories/Windows/"/>
     
     
-      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
-    
       <category term="Windows" scheme="https://iitii.github.io/tags/Windows/"/>
+    
+      <category term="config" scheme="https://iitii.github.io/tags/config/"/>
     
   </entry>
   
@@ -493,28 +529,6 @@
       <category term="frp" scheme="https://iitii.github.io/tags/frp/"/>
     
       <category term="network" scheme="https://iitii.github.io/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NULL</title>
-    <link href="https://iitii.github.io/2019/02/05/1/"/>
-    <id>https://iitii.github.io/2019/02/05/1/</id>
-    <published>2019-02-04T17:18:04.000Z</published>
-    <updated>2019-05-24T15:09:35.287Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/lunar-new-year-2019.gif" alt="happy_new_year"></p><center><small>本图片来自Google，侵删</small></center>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/images/lunar-new-year-2019.gif&quot; alt=&quot;happy_new_year&quot;&gt;&lt;/p&gt;
-&lt;center&gt;&lt;small&gt;本图片来自Google，侵删&lt;/small&gt;&lt;/center&gt;
-      
-    
-    </summary>
-    
     
   </entry>
   

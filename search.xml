@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker 安装 Oracle 数据库]]></title>
+    <url>%2F2020%2F02%2F24%2F1%2F</url>
+    <content type="text"><![CDATA[若无特殊说明，文中的 “网络畅通” 自行解决 安装 DockerWindows检查必需项 控制面板 -&gt; 程序和功能 -&gt; 启用或关闭 Windows 功能 -&gt; 勾选 HyperV 和 Containers -&gt; 确定 -&gt; （待运行完成）重启电脑 必须启用 HyperV 和 Containers 如果启用或关闭 Windows 功能里面没有上述两项，继续这一步，有则跳到下一步 将下述脚本分别复制黏贴保存为 HyperV.cmd 和 Containers.cmd或者直接从这里 下载然后使用管理员身份运行 启用 HyperV 123456rem require Administratorpushd "%~dp0"dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txtfor /f %%i in ('findstr /i . hyper-v.txt 2^&gt;nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"del hyper-v.txtDism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL 启用 Containers 1234567rem require Administratorpushd "%~dp0"dir /b %SystemRoot%\servicing\Packages\*containers*.mum &gt;containers.txtfor /f %%i in ('findstr /i . containers.txt 2^&gt;nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"del containers.txtDism /online /enable-feature /featurename:Containers -All /LimitAccess /ALLpause 安装 docker 保证网络畅通 浏览器打开 https://www.docker.com/products/docker-desktop 选择自己的版本 下载 双击安装 一切默认，一直点下一步 安装完成 如果出现 Docker Desktop requires Windows 10 Pro... Win + R 打开运行，输入 regedit 回车 导航到 Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion 修改 EditionID 值为 Professional 即可 重新执行第五步 Ubuntu sudo apt-get update &amp;&amp; sudo apt install docker.io -y 获取镜像 保证网络畅通 打开 https://www.docker.com/ 点击 Get Started 旁边的 Sign In 有账号直接登录，没账号就点击 Sign Up 进行注册 登录以后打开 https://hub.docker.com/_/oracle-database-enterprise-edition 点击 Proceed to Checkout 填写必要信息并提交 在页面右侧，我们可以看见 docker pull store/oracle/database-enterprise:12.2.0.1 打开 powershell 或 bash 设置命令行代理 (Windows 现在只能通过设置系统变量的方式给命令行设置代理) -&gt; See: 命令行代理方式 docker login 使用 docker info 去查看登录信息，如果没有 Username 这一行则没有登陆 填写必要信息，密码无回显 Run: docker pull store/oracle/database-enterprise:12.2.0.1 耐心等待 你也可以从别人已有的镜像 Copy 一份给自己 docker image save 12a359cd0528 &gt; oracle_12.2.0.1.tar docker image load &lt; oracle_12.2.0.1.tar 耐心等待，直到输出一长串字符（假设为：12a359cd0528） docker image tag 12a359cd0528 store/oracle/database-enterprise:12.2.0.1 输入 docker images 即可看见镜像 Run 容器正常运行最低要求为：8GB磁盘空间和2GB RAM其中 &lt;Oracle-DB&gt; 为容器名称, 默认用户名和密码为 sys 和 Oradoc_db1 docker run -d -it --name &lt;Oracle-DB&gt; -P store/oracle/database-enterprise:12.2.0.1 Example: docker run -d -it --name oracle -P store/oracle/database-enterprise:12.2.0.1 使用 docker ps -a 来查看暴露的端口和运行状态 如果启动失败先确认自己是否已经登录 使用 docker logs oracle 查看错误信息 通过 IDEA 进行远程管理/连接 [可选]启用 APIWindow 双击 docker 图标 在 General 界面勾选 Expose daemoon on tcp://... 在 Docker Engine 界面添加 &quot;ip&quot;: &quot;0.0.0.0&quot; 点击 Apply &amp; Restart Ubuntu vim /etc/systemd/system/docker.service.d/startup_options.conf 修改 ExecStart=/usr/bin/docker daemon 为 ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2375 sudo systemctl daemon-reload &amp;&amp; sudo systemctl restart docker.service curl http://localhost:2375/version 应该会返回一个关于当前版本的 json 信息 IDEA 连接 打开: Setting -&gt; Build, Execution, Deployment -&gt; Docker 点击 “+” 号 选择 TCP socket 根据自己的情况，在 Engine API URL 输入对应的 URL 点击ok 等待连接 连接成功]]></content>
+      <categories>
+        <category>Oracle</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+        <tag>database</tag>
+        <tag>Windows</tag>
+        <tag>Ubuntu</tag>
+        <tag>Oracle数据库</tag>
+        <tag>安装</tag>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[V2ray NGINX+TLS+WS 一键部署]]></title>
     <url>%2F2020%2F02%2F08%2F1%2F</url>
     <content type="text"><![CDATA[Update at Sun Feb 9 13:13:17 CST 2020 为了简化操作同时也为了一些可以自定义开机脚本的云服务厂商（如：GCP），添加了 startUp.sh 当然您也可以在系统正常运行时直接执行该脚本 使用方法打开链接，全选，复制打开可以自定义启动脚本的地方，黏贴修改脚本首部必要的信息，如: INSTALL_MODE, SITE_NAME, WS_PATH, UUID, DDNS_KEY 注意：不一定 要全部填写。服务端必须填写: SITE_NAME, DDNS_KEY客户端必须填写: INSTALL_MODE, SITE_NAME GCP 在实例创建时添加启动脚本在 GCP Console 中，转到虚拟机实例页面。点击创建实例。在创建新实例页面上，填写实例的属性。 对于高级的配置选项，展开管理、安全、磁盘、网络、单独租用部分。在自动化部分的启动脚本下，提供启动脚本的内容。点击创建以创建实例。 查看 v2ray, nginx 运行状态: systemctl status v2ray nginxv2ray 配置文件: /etc/v2ray/config.jsonnginx 配置文件: /etc/nginx/sites-available/defaultv2ray 日志文件: /var/log/v2ray/*nginx 日志文件: /var/log/nginx/*GCP 启动脚本输出会写入以下日志文件：CentOS 和 RHEL：/var/log/messagesDebian：/var/log/daemon.logUbuntu：/var/log/syslogSLES：/var/log/messages 前置条件 有一个 dns.he.net 的账号，而且至少托管了一个域名 有一个在 dns.he.net 上托管的域名而且配置了 DDNS （动态域名解析） 一台干净的 Linux 服务器 会一些 Linux 的基本操作 开启 DDNS 如果有，可以跳过 登录 dns.he.net 并且进入到域名管理界面 点击添加 A 记录 填写要开启 DDNS 的域名 勾选 Enable entry for dynamic dns 并点击 submit 在域名列表里面找到添加的域名，在右边 DDNS 这一栏应该有一个箭头，点击箭头 点击生成 DDNS key 或者自己填一遍 将 DDNS key 复制出来，然后点击提交即可 一些假设 服务器IP为: 1.1.1.1 域名为: v2.google.com DDNS key 为: re35A5xFGdEzrRow ws 路径为: path uuid为: 85d0e39a-4571-44da-80bb-caf5f853c2ba 如何使用 登录到服务器: ssh root@1.1.1.1 Clone 仓库: git clone https://github.com/IITII/AutoV2ray.git 开始安装 安装服务端 最简单的方法: cd AutoV2ray &amp;&amp; bash v2ray.sh -w v2.google.com --ddns re35A5xFGdEzrRow 完整的: cd AutoV2ray &amp;&amp; bash v2ray.sh -t 1 -w v2.google.com --ddns re35A5xFGdEzrRow -p path -u 85d0e39a-4571-44da-80bb-caf5f853c2ba 加点料: cd AutoV2ray &amp;&amp; bash v2ray.sh -t 1 -w v2.google.com --ddns re35A5xFGdEzrRow -p path -u 85d0e39a-4571-44da-80bb-caf5f853c2ba &amp;&amp; systemctl status v2ray nginx 安装客户端 (中转端) 最简单的方法: cd AutoV2ray &amp;&amp; bash v2ray.sh -t 2 -w v2.google.com 完整的: cd AutoV2ray &amp;&amp; bash v2ray.sh -t 2 -w v2.google.com -p path -u 85d0e39a-4571-44da-80bb-caf5f853c2ba 加点料: cd AutoV2ray &amp;&amp; bash v2ray.sh -t 2 -w v2.google.com -p path -u 85d0e39a-4571-44da-80bb-caf5f853c2ba &amp;&amp; systemctl status v2ray 如果你想在部署结束后自动添加 ssh key 的话, fork 该仓库，修改 ssh.pub 的文件内容。将 &amp;&amp; cat ~/AutoV2ray/ssh.pub &gt;&gt; ~/.ssh/authorized_keys 添加到命令的尾部，或者直接执行一下 cat ~/AutoV2ray/ssh.pub &gt;&gt; ~/.ssh/authorized_keys 也可。 1234567891011root@test-machine# bash v2ray.shUsage: ./v2ray.sh -h, --help Show this page ./v2ray.sh -t: Install, default "server" ./v2ray.sh -t 1 Install server ./v2ray.sh -t 2 Install client ./v2ray.sh -w siteName ./v2ray.sh -p, --path v2ray web socket path default "/bin/date +"%S" | /usr/bin/base64" ./v2ray.sh -u v2ray uuid ./v2ray.sh --ddns dns.he.net ddns's key 有点问题？ 仔细查看命令是否有问题 查看运行时终端的输出 查看 /var/v2ray/config.json 和 /etc/nginx/sites-enabled/default 文件的内容]]></content>
@@ -85,9 +103,9 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>grub</tag>
         <tag>lvm</tag>
-        <tag>Linux</tag>
         <tag>boot</tag>
       </tags>
   </entry>
@@ -187,8 +205,8 @@
         <category>Windows</category>
       </categories>
       <tags>
-        <tag>config</tag>
         <tag>Windows</tag>
+        <tag>config</tag>
       </tags>
   </entry>
   <entry>
@@ -317,11 +335,11 @@
         <category>VPN</category>
       </categories>
       <tags>
-        <tag>config</tag>
         <tag>Linux</tag>
+        <tag>config</tag>
+        <tag>Ubuntu18.04</tag>
         <tag>VPN</tag>
         <tag>proxy</tag>
-        <tag>Ubuntu18.04</tag>
       </tags>
   </entry>
   <entry>
@@ -333,8 +351,8 @@
         <category>IIS10</category>
       </categories>
       <tags>
-        <tag>config</tag>
         <tag>Windows</tag>
+        <tag>config</tag>
         <tag>IIS</tag>
         <tag>PHP</tag>
       </tags>
@@ -385,8 +403,8 @@
         <category>proxy</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>Windows</tag>
+        <tag>Linux</tag>
         <tag>proxy</tag>
       </tags>
   </entry>
