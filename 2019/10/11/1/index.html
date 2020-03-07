@@ -156,7 +156,7 @@
 <meta property="og:description" content="有的时候我们需要做一个简单而漂亮的图表来查看服务器的流量情况，怎么办呢？我们可以使用 VNSTAT-DASHBOARD 来实现。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://iitii.github.io/images/SimpleLineChart/demo.png">
-<meta property="og:updated_time" content="2020-03-07T06:29:45.169Z">
+<meta property="og:updated_time" content="2020-03-07T06:52:27.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个简单的 vnStat 监控界面">
 <meta name="twitter:description" content="有的时候我们需要做一个简单而漂亮的图表来查看服务器的流量情况，怎么办呢？我们可以使用 VNSTAT-DASHBOARD 来实现。">
@@ -524,7 +524,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-07 14:29:45" itemprop="dateModified" datetime="2020-03-07T14:29:45+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-07 14:52:27" itemprop="dateModified" datetime="2020-03-07T14:52:27+08:00">2020-03-07</time>
               
             
           </span>
@@ -608,7 +608,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">825</span>
+                <span title="本文字数">826</span>
               
 
               
@@ -658,7 +658,7 @@
 <div class="note warning">
             <ul><li>如果没有数据，可能是因为刚刚才安装 vnstat，vnstat没有收集到足够的数据</li></ul>
           </div>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt insall nginx vnstat -y</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/IITII/VNSTAT-DASHBOARD /var/www/vnstat</span><br><span class="line"><span class="built_in">cd</span> /var/www/vnstat &amp;&amp; git checkout ALLINONE</span><br><span class="line">sed -i <span class="string">"s/root \S\+/root \/var\/www\/vnstat;/g"</span> /etc/nginx/sites-available/default \</span><br><span class="line">&amp;&amp; nginx -t &amp;&amp; nginx -s reload \</span><br><span class="line">cat <span class="string">"1 * * * * /usr/bin/vnstat --json &gt; /var/www/vnstat/vnstat.json"</span> \</span><br><span class="line">&gt;&gt; /var/spool/cron/crontabs/`whoami`</span><br><span class="line">crontab -l</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt insall nginx vnstat -y</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/IITII/VNSTAT-DASHBOARD /var/www/vnstat</span><br><span class="line"><span class="built_in">cd</span> /var/www/vnstat &amp;&amp; git checkout ALLINONE</span><br><span class="line">sed -i <span class="string">"s/root \S\+/root \/var\/www\/vnstat;/g"</span> /etc/nginx/sites-available/default \</span><br><span class="line">&amp;&amp; nginx -t &amp;&amp; nginx -s reload \</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"1 * * * * /usr/bin/vnstat --json &gt; /var/www/vnstat/vnstat.json"</span> \</span><br><span class="line">&gt;&gt; /var/spool/cron/crontabs/`whoami`</span><br><span class="line">crontab -l</span><br></pre></td></tr></table></figure></div>
 <h3 id="一些注意事项"><a href="#一些注意事项" class="headerlink" title="一些注意事项"></a>一些注意事项</h3><ul>
 <li><code>index.html</code> 会自动加载同级目录下的 <code>vnstat.json</code> 来生成图表，若无则否。</li>
 <li>你也可以在输入框里面手动输入 <code>vnstat json</code> 数据，数据可以使用 <code>vnstat --json</code> 来生成</li>
